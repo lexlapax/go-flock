@@ -52,23 +52,23 @@ func main() {
 
 func fetchSingleFeed(ctx context.Context) {
 	tool := tools.NewFetchRSSFeedTool()
-	
+
 	params := tools.FetchRSSFeedParams{
 		URL: "https://hnrss.org/frontpage",
 	}
-	
+
 	result, err := tool.Execute(ctx, params)
 	if err != nil {
 		log.Printf("Error fetching feed: %v", err)
 		return
 	}
-	
+
 	if feedResult, ok := result.(*tools.FetchRSSFeedResult); ok {
 		fmt.Printf("Feed Title: %s\n", feedResult.Title)
 		fmt.Printf("Description: %s\n", feedResult.Description)
 		fmt.Printf("Total Items: %d\n", len(feedResult.Items))
 		fmt.Printf("Fetched At: %s\n", feedResult.FetchedAt)
-		
+
 		if len(feedResult.Items) > 0 {
 			fmt.Println("\nFirst 3 items:")
 			for i, item := range feedResult.Items {
@@ -85,26 +85,26 @@ func fetchSingleFeed(ctx context.Context) {
 
 func fetchMultipleFeeds(ctx context.Context) {
 	tool := tools.NewFetchRSSFeedTool()
-	
+
 	var wg sync.WaitGroup
 	results := make(chan feedResult, len(feeds))
-	
+
 	// Fetch all feeds concurrently
 	for _, feed := range feeds {
 		wg.Add(1)
 		go func(name, url string) {
 			defer wg.Done()
-			
+
 			params := tools.FetchRSSFeedParams{
 				URL:     url,
 				Limit:   5,
 				Timeout: 10,
 			}
-			
+
 			start := time.Now()
 			result, err := tool.Execute(ctx, params)
 			duration := time.Since(start)
-			
+
 			if err != nil {
 				results <- feedResult{
 					name:     name,
@@ -113,7 +113,7 @@ func fetchMultipleFeeds(ctx context.Context) {
 				}
 				return
 			}
-			
+
 			if feedData, ok := result.(*tools.FetchRSSFeedResult); ok {
 				results <- feedResult{
 					name:     name,
@@ -123,24 +123,24 @@ func fetchMultipleFeeds(ctx context.Context) {
 			}
 		}(feed.name, feed.url)
 	}
-	
+
 	// Wait for all feeds to complete
 	go func() {
 		wg.Wait()
 		close(results)
 	}()
-	
+
 	// Display results as they come in
 	fmt.Println("Fetching feeds concurrently...")
 	fmt.Println()
-	
+
 	for result := range results {
 		if result.err != nil {
 			fmt.Printf("❌ %s: Error - %v (took %v)\n", result.name, result.err, result.duration)
 		} else {
-			fmt.Printf("✅ %s: Success - %d items (took %v)\n", 
+			fmt.Printf("✅ %s: Success - %d items (took %v)\n",
 				result.name, len(result.feed.Items), result.duration)
-			
+
 			// Show first item from each feed
 			if len(result.feed.Items) > 0 {
 				fmt.Printf("   Latest: %s\n", result.feed.Items[0].Title)
@@ -151,33 +151,33 @@ func fetchMultipleFeeds(ctx context.Context) {
 
 func fetchWithParameters(ctx context.Context) {
 	tool := tools.NewFetchRSSFeedTool()
-	
+
 	// Fetch with a 5-second timeout and limit to 3 items
 	params := tools.FetchRSSFeedParams{
 		URL:     "https://techcrunch.com/feed/",
 		Limit:   3,
 		Timeout: 5,
 	}
-	
+
 	fmt.Println("Fetching TechCrunch feed with:")
 	fmt.Printf("- Limit: %d items\n", params.Limit)
 	fmt.Printf("- Timeout: %d seconds\n", params.Timeout)
 	fmt.Println()
-	
+
 	result, err := tool.Execute(ctx, params)
 	if err != nil {
 		log.Printf("Error fetching feed: %v", err)
 		return
 	}
-	
+
 	if feedResult, ok := result.(*tools.FetchRSSFeedResult); ok {
 		fmt.Printf("Feed: %s\n", feedResult.Title)
 		fmt.Printf("Items returned: %d\n", len(feedResult.Items))
-		
+
 		for i, item := range feedResult.Items {
 			fmt.Printf("\n%d. %s\n", i+1, item.Title)
 			fmt.Printf("   Published: %s\n", item.Published)
-			
+
 			// Show truncated description
 			desc := item.Description
 			if len(desc) > 150 {

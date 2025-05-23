@@ -36,6 +36,12 @@ cd examples/feed_tools
 go run main.go
 ```
 
+### Web Tools (Web Scraping & Link Extraction)
+```bash
+cd examples/web_tools
+go run main.go
+```
+
 ## Example Categories
 
 - **basic_tool/**: Demonstrates the pattern for tools that go-flock provides
@@ -43,6 +49,7 @@ go run main.go
 - **basic_workflow/**: Illustrates workflow orchestration patterns
 - **datetime_tools/**: Working example of using datetime tools from go-flock
 - **feed_tools/**: Demonstrates RSS feed fetching and processing capabilities
+- **web_tools/**: Shows web page fetching and link extraction tools
 
 ## Tool Naming Convention
 

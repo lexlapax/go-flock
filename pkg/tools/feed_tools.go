@@ -11,22 +11,22 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/lexlapax/go-llms/pkg/agent/tools"
 	domain "github.com/lexlapax/go-llms/pkg/agent/domain"
+	"github.com/lexlapax/go-llms/pkg/agent/tools"
 	sdomain "github.com/lexlapax/go-llms/pkg/schema/domain"
 )
 
 // RSS Feed structures
 type RSSFeed struct {
-	XMLName xml.Name    `xml:"rss"`
-	Channel RSSChannel  `xml:"channel"`
+	XMLName xml.Name   `xml:"rss"`
+	Channel RSSChannel `xml:"channel"`
 }
 
 type RSSChannel struct {
-	Title       string     `xml:"title"`
-	Link        string     `xml:"link"`
-	Description string     `xml:"description"`
-	Items       []RSSItem  `xml:"item"`
+	Title       string    `xml:"title"`
+	Link        string    `xml:"link"`
+	Description string    `xml:"description"`
+	Items       []RSSItem `xml:"item"`
 }
 
 type RSSItem struct {
@@ -46,11 +46,11 @@ type FetchRSSFeedParams struct {
 
 // Tool Results
 type FetchRSSFeedResult struct {
-	Title       string       `json:"title"`
-	Description string       `json:"description"`
-	Link        string       `json:"link"`
-	Items       []FeedItem   `json:"items"`
-	FetchedAt   string       `json:"fetched_at"`
+	Title       string     `json:"title"`
+	Description string     `json:"description"`
+	Link        string     `json:"link"`
+	Items       []FeedItem `json:"items"`
+	FetchedAt   string     `json:"fetched_at"`
 }
 
 type FeedItem struct {
@@ -101,45 +101,45 @@ func fetchRSSFeedHandler(ctx context.Context, params FetchRSSFeedParams) (*Fetch
 	if params.Timeout > 0 {
 		timeout = params.Timeout
 	}
-	
+
 	// Create HTTP client with timeout
 	client := &http.Client{
 		Timeout: time.Duration(timeout) * time.Second,
 	}
-	
+
 	// Create request with context
 	req, err := http.NewRequestWithContext(ctx, "GET", params.URL, nil)
 	if err != nil {
 		return nil, fmt.Errorf("creating request: %w", err)
 	}
-	
+
 	// Set User-Agent
 	req.Header.Set("User-Agent", "go-flock/1.0 RSS Reader")
-	
+
 	// Make the request
 	resp, err := client.Do(req)
 	if err != nil {
 		return nil, fmt.Errorf("fetching RSS feed: %w", err)
 	}
 	defer resp.Body.Close()
-	
+
 	// Check status code
 	if resp.StatusCode != http.StatusOK {
 		return nil, fmt.Errorf("unexpected status code: %d", resp.StatusCode)
 	}
-	
+
 	// Read response body
 	body, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return nil, fmt.Errorf("reading response: %w", err)
 	}
-	
+
 	// Parse RSS feed
 	var feed RSSFeed
 	if err := xml.Unmarshal(body, &feed); err != nil {
 		return nil, fmt.Errorf("parsing RSS feed: %w", err)
 	}
-	
+
 	// Convert to result format
 	result := &FetchRSSFeedResult{
 		Title:       feed.Channel.Title,
@@ -148,13 +148,13 @@ func fetchRSSFeedHandler(ctx context.Context, params FetchRSSFeedParams) (*Fetch
 		Items:       make([]FeedItem, 0, len(feed.Channel.Items)),
 		FetchedAt:   time.Now().UTC().Format(time.RFC3339),
 	}
-	
+
 	// Apply limit if specified
 	itemCount := len(feed.Channel.Items)
 	if params.Limit > 0 && params.Limit < itemCount {
 		itemCount = params.Limit
 	}
-	
+
 	// Convert items
 	for i := range itemCount {
 		item := feed.Channel.Items[i]
@@ -166,7 +166,7 @@ func fetchRSSFeedHandler(ctx context.Context, params FetchRSSFeedParams) (*Fetch
 			GUID:        item.GUID,
 		})
 	}
-	
+
 	return result, nil
 }
 

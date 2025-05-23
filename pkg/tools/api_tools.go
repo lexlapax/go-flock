@@ -7,23 +7,23 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/lexlapax/go-llms/pkg/agent/tools"
 	domain "github.com/lexlapax/go-llms/pkg/agent/domain"
+	"github.com/lexlapax/go-llms/pkg/agent/tools"
 	sdomain "github.com/lexlapax/go-llms/pkg/schema/domain"
 )
 
 // Tool Parameters
 type SearchNewsAPIParams struct {
-	Query      string            `json:"query" description:"Search query for news articles"`
-	APIKey     string            `json:"api_key" description:"API key for the news service"`
-	Language   string            `json:"language,omitempty" description:"Language code (e.g., 'en', 'es')"`
-	SortBy     string            `json:"sort_by,omitempty" description:"Sort order: 'relevancy', 'popularity', 'publishedAt'"`
-	PageSize   int               `json:"page_size,omitempty" description:"Number of results per page (default: 20)"`
-	Page       int               `json:"page,omitempty" description:"Page number for pagination (default: 1)"`
-	DateFrom   string            `json:"date_from,omitempty" description:"Oldest article date (YYYY-MM-DD)"`
-	DateTo     string            `json:"date_to,omitempty" description:"Newest article date (YYYY-MM-DD)"`
-	Domains    string            `json:"domains,omitempty" description:"Comma-separated list of domains to include"`
-	ExcludeDomains string        `json:"exclude_domains,omitempty" description:"Comma-separated list of domains to exclude"`
+	Query          string `json:"query" description:"Search query for news articles"`
+	APIKey         string `json:"api_key" description:"API key for the news service"`
+	Language       string `json:"language,omitempty" description:"Language code (e.g., 'en', 'es')"`
+	SortBy         string `json:"sort_by,omitempty" description:"Sort order: 'relevancy', 'popularity', 'publishedAt'"`
+	PageSize       int    `json:"page_size,omitempty" description:"Number of results per page (default: 20)"`
+	Page           int    `json:"page,omitempty" description:"Page number for pagination (default: 1)"`
+	DateFrom       string `json:"date_from,omitempty" description:"Oldest article date (YYYY-MM-DD)"`
+	DateTo         string `json:"date_to,omitempty" description:"Newest article date (YYYY-MM-DD)"`
+	Domains        string `json:"domains,omitempty" description:"Comma-separated list of domains to include"`
+	ExcludeDomains string `json:"exclude_domains,omitempty" description:"Comma-separated list of domains to exclude"`
 }
 
 // Tool Results
