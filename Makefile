@@ -154,7 +154,7 @@ examples: build-examples ## Alias for build-examples
 .PHONY: run-examples  
 run-examples: build-examples ## Build and run all examples
 	@echo "Running examples..."
-	@for binary in bin/*_tools bin/*_agent bin/*_workflow; do \
+	@for binary in bin/basic_* bin/*_tools; do \
 		if [ -f "$$binary" ]; then \
 			echo "Running $$binary..."; \
 			./$$binary; \

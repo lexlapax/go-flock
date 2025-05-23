@@ -273,6 +273,7 @@ Comprehensive documentation is available in the `docs/` directory:
 - **[Documentation Index](docs/README.md)** - Main documentation overview
 - **[Tools Documentation](docs/tools/)** - Detailed documentation for all available tools
   - [Datetime Tools](docs/tools/datetime.md) - Date and time manipulation utilities
+  - [Feed Tools](docs/tools/feed.md) - RSS/Atom feed fetching and processing (coming soon)
 - **[Developer Guides](docs/developer/)** - Guides for extending go-flock
   - [Creating Custom Tools](docs/developer/creating-tools.md) - Step-by-step guide for building new tools
 
@@ -296,6 +297,7 @@ Examples cover:
 - **basic_agent/**: Agent usage with tool integration
 - **basic_workflow/**: Multi-step workflow orchestration
 - **datetime_tools/**: Complete datetime tools demonstration
+- **feed_tools/**: RSS feed fetching with concurrent processing
 
 ## Contributing
 

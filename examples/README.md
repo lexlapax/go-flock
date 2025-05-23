@@ -30,12 +30,19 @@ cd examples/datetime_tools
 go run main.go
 ```
 
+### Feed Tools (RSS/Atom Feed Processing)
+```bash
+cd examples/feed_tools
+go run main.go
+```
+
 ## Example Categories
 
 - **basic_tool/**: Demonstrates the pattern for tools that go-flock provides
 - **basic_agent/**: Shows the pattern for specialized agents  
 - **basic_workflow/**: Illustrates workflow orchestration patterns
 - **datetime_tools/**: Working example of using datetime tools from go-flock
+- **feed_tools/**: Demonstrates RSS feed fetching and processing capabilities
 
 ## Tool Naming Convention
 
