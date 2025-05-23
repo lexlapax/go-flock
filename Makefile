@@ -31,7 +31,7 @@ build: ## Build the binary
 	go build ${LDFLAGS} -o bin/${BINARY_NAME} ${CMD_DIR}
 
 .PHONY: build-all
-build-all: ## Build all packages
+build-all: build build-examples ## Build all packages and examples
 	@echo "Building all packages..."
 	go build ./...
 
@@ -138,8 +138,8 @@ security: ## Run security checks (requires gosec)
 		echo "gosec not found. Install with: go install github.com/securecodewarrior/gosec/v2/cmd/gosec@latest"; \
 	fi
 
-.PHONY: examples
-examples: ## Build and run examples
+.PHONY: build-examples
+build-examples: ## Build example programs
 	@echo "Building examples..."
 	@for dir in examples/*/; do \
 		if [ -f "$$dir/main.go" ]; then \
@@ -148,10 +148,13 @@ examples: ## Build and run examples
 		fi \
 	done
 
+.PHONY: examples
+examples: build-examples ## Alias for build-examples
+
 .PHONY: run-examples  
-run-examples: examples ## Run all examples
+run-examples: build-examples ## Build and run all examples
 	@echo "Running examples..."
-	@for binary in bin/basic_*; do \
+	@for binary in bin/*_tools bin/*_agent bin/*_workflow; do \
 		if [ -f "$$binary" ]; then \
 			echo "Running $$binary..."; \
 			./$$binary; \

@@ -266,6 +266,16 @@ go-flock builds on go-llms with these key interfaces:
 - **TaskResult**: Standardized task execution results
 - **CoordinationResult**: Multi-agent coordination outcomes
 
+## Documentation
+
+Comprehensive documentation is available in the `docs/` directory:
+
+- **[Documentation Index](docs/README.md)** - Main documentation overview
+- **[Tools Documentation](docs/tools/)** - Detailed documentation for all available tools
+  - [Datetime Tools](docs/tools/datetime.md) - Date and time manipulation utilities
+- **[Developer Guides](docs/developer/)** - Guides for extending go-flock
+  - [Creating Custom Tools](docs/developer/creating-tools.md) - Step-by-step guide for building new tools
+
 ## Examples
 
 The `examples/` directory contains working demonstrations:
@@ -278,12 +288,14 @@ make run-examples
 ./bin/basic_tool
 ./bin/basic_agent  
 ./bin/basic_workflow
+./bin/datetime_tools
 ```
 
 Examples cover:
 - **basic_tool/**: Tool creation and execution patterns
 - **basic_agent/**: Agent usage with tool integration
 - **basic_workflow/**: Multi-step workflow orchestration
+- **datetime_tools/**: Complete datetime tools demonstration
 
 ## Contributing
 

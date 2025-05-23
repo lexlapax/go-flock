@@ -1,67 +1,60 @@
-// ABOUTME: This example demonstrates basic workflow usage in the go-flock library.
-// ABOUTME: Shows how to create and execute workflows that orchestrate multiple agents.
+// ABOUTME: This example demonstrates workflow orchestration in the go-flock library.
+// ABOUTME: Shows how workflows coordinate multiple agents and tools for complex tasks.
 
 package main
 
 import (
-	"context"
 	"fmt"
-	"log"
+	"time"
 )
 
-// ExampleWorkflow demonstrates a simple workflow implementation
-type ExampleWorkflow struct {
-	agents []interface{} // Placeholder for agents
-}
-
-func (w *ExampleWorkflow) Name() string {
-	return "example_workflow"
-}
-
-func (w *ExampleWorkflow) Description() string {
-	return "A simple example workflow that coordinates multiple steps"
-}
-
-func (w *ExampleWorkflow) Execute(ctx context.Context, config map[string]interface{}) (interface{}, error) {
-	steps := []string{"Step 1: Initialize", "Step 2: Process", "Step 3: Finalize"}
-	results := make([]string, len(steps))
-
-	for i, step := range steps {
-		results[i] = fmt.Sprintf("Completed: %s", step)
-	}
-
-	return map[string]interface{}{
-		"workflow": w.Name(),
-		"steps":    results,
-		"status":   "completed",
-	}, nil
-}
-
-func (w *ExampleWorkflow) Agents() []interface{} {
-	return w.agents
-}
+// This example shows the pattern that go-flock workflows will follow.
+// Each workflow in pkg/workflows/ will be a ready-to-use implementation
+// that orchestrates multiple agents and tools to accomplish complex tasks.
 
 func main() {
-	fmt.Println("Basic Workflow Example")
-	fmt.Println("======================")
+	fmt.Println("go-flock Workflow Pattern Example")
+	fmt.Println("=================================")
 
-	// Create a workflow instance
-	workflow := &ExampleWorkflow{
-		agents: []interface{}{}, // Agents would be added here
+	// In actual usage, you would import a workflow like:
+	// import "github.com/your-org/go-flock/pkg/workflows/research"
+	// workflow := research.NewWebResearchWorkflow()
+
+	// Or for deployment workflows:
+	// import "github.com/your-org/go-flock/pkg/workflows/deployment"
+	// workflow := deployment.NewBlueGreenDeploymentWorkflow()
+
+	// The workflows would orchestrate multiple agents and tools
+	// to accomplish complex multi-step processes
+
+	fmt.Println("\ngo-flock will provide workflows for common patterns:")
+	fmt.Println("- research: Multi-source research, fact verification, report generation")
+	fmt.Println("- deployment: CI/CD pipelines, rollback strategies, health checks")
+	fmt.Println("- analysis: Code review, security scanning, performance analysis")
+	fmt.Println("- migration: Data migration, schema updates, validation")
+	fmt.Println("- monitoring: Alert aggregation, incident response, remediation")
+
+	fmt.Println("\nExample workflow structure:")
+	fmt.Println("1. Input validation and preparation")
+	fmt.Println("2. Parallel execution of independent steps")
+	fmt.Println("3. Coordination and aggregation of results")
+	fmt.Println("4. Decision points and conditional flows")
+	fmt.Println("5. Error handling and rollback strategies")
+
+	// Demonstrate a simple workflow execution pattern
+	fmt.Println("\nSimulated workflow execution:")
+	steps := []string{
+		"Validating input parameters",
+		"Initializing agents",
+		"Executing parallel tasks",
+		"Aggregating results",
+		"Generating final output",
 	}
 
-	// Execute the workflow
-	ctx := context.Background()
-	config := map[string]interface{}{
-		"input": "Example workflow input",
+	for i, step := range steps {
+		fmt.Printf("[%s] Step %d: %s\n", time.Now().Format("15:04:05"), i+1, step)
+		time.Sleep(500 * time.Millisecond) // Simulate work
 	}
 
-	result, err := workflow.Execute(ctx, config)
-	if err != nil {
-		log.Fatalf("Workflow execution failed: %v", err)
-	}
-
-	fmt.Printf("Workflow: %s\n", workflow.Name())
-	fmt.Printf("Description: %s\n", workflow.Description())
-	fmt.Printf("Result: %+v\n", result)
+	fmt.Println("\nWorkflow completed successfully!")
 }

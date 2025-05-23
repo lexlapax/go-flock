@@ -7,7 +7,7 @@ import (
 	"context"
 	"time"
 
-	"github.com/lexlapax/go-flock/pkg/agents"
+	agentDomain "github.com/lexlapax/go-llms/pkg/agent/domain"
 	schemaDomain "github.com/lexlapax/go-llms/pkg/schema/domain"
 )
 
@@ -17,8 +17,8 @@ type Workflow interface {
 	Name() string
 	// Description returns a description of what the workflow accomplishes
 	Description() string
-	// Execute runs the workflow with the given input and agents
-	Execute(ctx context.Context, input WorkflowInput, flockAgent agents.FlockAgent) (WorkflowResult, error)
+	// Execute runs the workflow with the given input and agent
+	Execute(ctx context.Context, input WorkflowInput, agent agentDomain.Agent) (WorkflowResult, error)
 	// GetSchema returns the schema for workflow input validation
 	GetSchema() *schemaDomain.Schema
 	// GetSteps returns the defined workflow steps
@@ -57,16 +57,16 @@ type WorkflowResult struct {
 
 // WorkflowStep represents a single step in a workflow
 type WorkflowStep struct {
-	ID           string                   `json:"id"`
-	Name         string                   `json:"name"`
-	Description  string                   `json:"description"`
-	AgentRole    agents.AgentRole         `json:"agent_role"`
-	Capabilities []agents.AgentCapability `json:"capabilities"`
-	Input        interface{}              `json:"input"`
-	Dependencies []string                 `json:"dependencies"`
-	Condition    StepCondition            `json:"condition,omitempty"`
-	Retryable    bool                     `json:"retryable"`
-	Timeout      time.Duration            `json:"timeout,omitempty"`
+	ID           string        `json:"id"`
+	Name         string        `json:"name"`
+	Description  string        `json:"description"`
+	AgentRole    string        `json:"agent_role"`   // Role hint for agent selection
+	Capabilities []string      `json:"capabilities"` // Required capabilities
+	Input        interface{}   `json:"input"`
+	Dependencies []string      `json:"dependencies"`
+	Condition    StepCondition `json:"condition,omitempty"`
+	Retryable    bool          `json:"retryable"`
+	Timeout      time.Duration `json:"timeout,omitempty"`
 }
 
 // StepResult represents the outcome of a workflow step
@@ -112,7 +112,7 @@ type WorkflowEngine interface {
 	// RegisterWorkflow adds a workflow to the engine
 	RegisterWorkflow(workflow Workflow) error
 	// ExecuteWorkflow runs a registered workflow
-	ExecuteWorkflow(ctx context.Context, name string, input WorkflowInput, agent agents.FlockAgent) (WorkflowResult, error)
+	ExecuteWorkflow(ctx context.Context, name string, input WorkflowInput, agent agentDomain.Agent) (WorkflowResult, error)
 	// ListWorkflows returns all registered workflows
 	ListWorkflows() []Workflow
 	// GetWorkflow retrieves a workflow by name

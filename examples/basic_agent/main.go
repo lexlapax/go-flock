@@ -1,56 +1,36 @@
-// ABOUTME: This example demonstrates basic agent usage in the go-flock library.
-// ABOUTME: Shows how to create and execute agents that combine tools and logic.
+// ABOUTME: This example demonstrates creating agents that will be used in workflows.
+// ABOUTME: Shows the pattern for specialized agents that go-flock will provide.
 
 package main
 
 import (
-	"context"
 	"fmt"
-	"log"
 )
 
-// ExampleAgent demonstrates a simple agent implementation
-type ExampleAgent struct {
-	tools []interface{} // Placeholder for tools
-}
-
-func (a *ExampleAgent) Name() string {
-	return "example_agent"
-}
-
-func (a *ExampleAgent) Description() string {
-	return "A simple example agent that processes text input"
-}
-
-func (a *ExampleAgent) Execute(ctx context.Context, input string) (string, error) {
-	// Simple processing logic
-	return fmt.Sprintf("Agent processed: %s", input), nil
-}
-
-func (a *ExampleAgent) Tools() []interface{} {
-	return a.tools
-}
+// This example shows the pattern that go-flock agents will follow.
+// Each agent in pkg/agents/ will be a ready-to-use implementation
+// that extends go-llms agents with specific capabilities.
 
 func main() {
-	fmt.Println("Basic Agent Example")
-	fmt.Println("===================")
+	fmt.Println("go-flock Agent Pattern Example")
+	fmt.Println("==============================")
 
-	// Create an agent instance
-	agent := &ExampleAgent{
-		tools: []interface{}{}, // Tools would be added here
-	}
+	// In actual usage, you would import an agent like:
+	// import "github.com/your-org/go-flock/pkg/agents/research"
+	// agent := research.NewWebResearchAgent(provider)
 
-	// Execute the agent
-	ctx := context.Background()
-	input := "Process this text"
+	// Or for code analysis:
+	// import "github.com/your-org/go-flock/pkg/agents/code"
+	// agent := code.NewCodeReviewAgent(provider)
 
-	result, err := agent.Execute(ctx, input)
-	if err != nil {
-		log.Fatalf("Agent execution failed: %v", err)
-	}
+	// The agents would extend go-llms Agent interface
+	// with pre-configured tools and system prompts
 
-	fmt.Printf("Agent: %s\n", agent.Name())
-	fmt.Printf("Description: %s\n", agent.Description())
-	fmt.Printf("Input: %s\n", input)
-	fmt.Printf("Output: %s\n", result)
+	fmt.Println("\ngo-flock will provide specialized agents:")
+	fmt.Println("- research: Web research, fact checking, summarization")
+	fmt.Println("- code: Code review, refactoring, documentation")
+	fmt.Println("- data: Data analysis, visualization, reporting")
+	fmt.Println("- devops: CI/CD, deployment, monitoring")
+	fmt.Println("- testing: Test generation, validation, QA")
+	fmt.Println("\nEach agent will come with appropriate tools and prompts pre-configured.")
 }
