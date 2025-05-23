@@ -234,9 +234,11 @@ go-flock/
 │   ├── workflows/         # Workflow orchestration with conditions
 │   └── common/            # Task management and shared types
 ├── examples/              # Working usage examples
-│   ├── basic_tool/        # Simple tool demonstration
 │   ├── basic_agent/       # Agent usage example
-│   └── basic_workflow/    # Workflow orchestration example
+│   ├── basic_workflow/    # Workflow orchestration example
+│   ├── datetime_tools/    # Date/time manipulation tools
+│   ├── feed_tools/        # RSS feed processing tools
+│   └── web_tools/         # Web scraping and extraction tools
 ├── docs/                  # Documentation
 ├── test/                  # Integration tests
 └── vendor/                # Vendored dependencies
@@ -287,14 +289,14 @@ The `examples/` directory contains working demonstrations:
 make run-examples
 
 # Or run individually
-./bin/basic_tool
 ./bin/basic_agent  
 ./bin/basic_workflow
 ./bin/datetime_tools
+./bin/feed_tools
+./bin/web_tools
 ```
 
 Examples cover:
-- **basic_tool/**: Tool creation and execution patterns
 - **basic_agent/**: Agent usage with tool integration
 - **basic_workflow/**: Multi-step workflow orchestration
 - **datetime_tools/**: Complete datetime tools demonstration

@@ -6,12 +6,6 @@ This directory contains example usage patterns for the go-flock library.
 
 Each example is a standalone Go program that demonstrates specific functionality:
 
-### Basic Tool Pattern
-```bash
-cd examples/basic_tool
-go run main.go
-```
-
 ### Basic Agent Pattern
 ```bash
 cd examples/basic_agent
@@ -44,7 +38,6 @@ go run main.go
 
 ## Example Categories
 
-- **basic_tool/**: Demonstrates the pattern for tools that go-flock provides
 - **basic_agent/**: Shows the pattern for specialized agents  
 - **basic_workflow/**: Illustrates workflow orchestration patterns
 - **datetime_tools/**: Working example of using datetime tools from go-flock
