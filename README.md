@@ -302,6 +302,7 @@ Examples cover:
 - **datetime_tools/**: Complete datetime tools demonstration
 - **feed_tools/**: RSS feed fetching with concurrent processing
 - **web_tools/**: Web scraping, link extraction, and metadata extraction
+- **news_api/**: News search using NewsAPI.org integration
 
 ## Contributing
 

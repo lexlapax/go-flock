@@ -36,6 +36,12 @@ cd examples/web_tools
 go run main.go
 ```
 
+### News API (News Search via NewsAPI.org)
+```bash
+cd examples/news_api
+go run main.go
+```
+
 ## Example Categories
 
 - **basic_agent/**: Shows the pattern for specialized agents  
@@ -43,6 +49,7 @@ go run main.go
 - **datetime_tools/**: Working example of using datetime tools from go-flock
 - **feed_tools/**: Demonstrates RSS feed fetching and processing capabilities
 - **web_tools/**: Shows web page fetching and link extraction tools
+- **news_api/**: Demonstrates news search using NewsAPI.org integration
 
 ## Tool Naming Convention
 

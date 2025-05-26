@@ -9,8 +9,9 @@ Detailed documentation for all available tools organized by category:
 - [DateTime Tools](./tools/datetime.md) - Date and time operations
 - [Feed Tools](./tools/feed.md) - RSS/Atom feed fetching and parsing
 - [Web Tools](./tools/web.md) - Web scraping, link extraction, and metadata tools
+- [API Tools](./tools/api.md) - External API integration (NewsAPI, REST endpoints)
 - [File Tools](./tools/file.md) - File system operations (coming soon)
-- [HTTP Tools](./tools/http.md) - Network and API operations (coming soon)
+- [HTTP Tools](./tools/http.md) - Network operations (coming soon)
 - [Data Tools](./tools/data.md) - Data transformation and processing (coming soon)
 
 ### [Agents Documentation](./agents/)
