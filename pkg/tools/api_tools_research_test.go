@@ -13,7 +13,7 @@ import (
 	"testing"
 )
 
-func TestSearchResearchHandler_SuccessWithProperMocks(t *testing.T) {
+func TestResearchPaperAPIHandler_SuccessWithProperMocks(t *testing.T) {
 	// Set up mock servers with correct response structures
 	arxivServer := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		// Mock arXiv response (Atom feed)
@@ -140,14 +140,14 @@ func TestSearchResearchHandler_SuccessWithProperMocks(t *testing.T) {
 	defer os.Unsetenv("CORE_API_KEY")
 
 	// Create test parameters
-	params := SearchResearchParams{
+	params := ResearchPaperAPIParams{
 		Query:      "machine learning",
 		MaxResults: 10,
 	}
 
 	// Execute handler
 	ctx := context.Background()
-	result, err := searchResearchHandler(ctx, params)
+	result, err := researchPaperAPIHandler(ctx, params)
 
 	// Assertions
 	if err != nil {
@@ -241,7 +241,7 @@ func TestSearchResearchHandler_SuccessWithProperMocks(t *testing.T) {
 	}
 }
 
-func TestSearchResearchHandler_PartialFailure(t *testing.T) {
+func TestResearchPaperAPIHandler_PartialFailure(t *testing.T) {
 	// Set up only arXiv server (others will fail)
 	arxivServer := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		arxivResponse := `<?xml version="1.0" encoding="UTF-8"?>
@@ -263,13 +263,13 @@ func TestSearchResearchHandler_PartialFailure(t *testing.T) {
 	pubmedBaseURL = "http://invalid-url/"
 	coreAPIURL = "http://invalid-url/"
 
-	params := SearchResearchParams{
+	params := ResearchPaperAPIParams{
 		Query:      "test",
 		MaxResults: 5,
 	}
 
 	ctx := context.Background()
-	result, err := searchResearchHandler(ctx, params)
+	result, err := researchPaperAPIHandler(ctx, params)
 
 	// Should succeed with partial results
 	if err != nil {
@@ -297,7 +297,7 @@ func TestSearchResearchHandler_PartialFailure(t *testing.T) {
 	}
 }
 
-func TestSearchResearchHandler_NoAPIKey(t *testing.T) {
+func TestResearchPaperAPIHandler_NoAPIKey(t *testing.T) {
 	// Ensure no CORE API key is set
 	os.Unsetenv("CORE_API_KEY")
 
@@ -309,14 +309,14 @@ func TestSearchResearchHandler_NoAPIKey(t *testing.T) {
 
 	arxivAPIURL = arxivServer.URL
 
-	params := SearchResearchParams{
+	params := ResearchPaperAPIParams{
 		Query:      "test",
 		MaxResults: 5,
 		Providers:  []string{"core"}, // Only request CORE
 	}
 
 	ctx := context.Background()
-	result, err := searchResearchHandler(ctx, params)
+	result, err := researchPaperAPIHandler(ctx, params)
 
 	// Should not fail completely, but CORE should have an error
 	if err != nil {

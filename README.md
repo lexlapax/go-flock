@@ -227,21 +227,24 @@ go test ./pkg/tools/...
 go-flock/
 ├── Makefile                # Build automation
 ├── cmd/                    # Command line applications
-│   └── flock/             # Main CLI application
+│   └── flock/             # Main CLI application (tools, agents, workflows management)
 ├── pkg/                   # Library packages
 │   ├── tools/             # Extended tool interfaces with categories
 │   ├── agents/            # Multi-agent coordination interfaces
 │   ├── workflows/         # Workflow orchestration with conditions
 │   └── common/            # Task management and shared types
 ├── examples/              # Working usage examples
-│   ├── basic_agent/       # Agent usage example
-│   ├── basic_workflow/    # Workflow orchestration example
-│   ├── brave_search/      # Web search using Brave Search API
-│   ├── datetime_tools/    # Date/time manipulation tools
-│   ├── feed_tools/        # RSS feed processing tools
-│   ├── news_api/          # News search using NewsAPI.org
-│   ├── search_research/   # Academic paper search across multiple databases
-│   └── web_tools/         # Web scraping and extraction tools
+│   ├── agents/            # Agent implementation examples
+│   │   └── research_papers/ # Complete Research Papers Agent with CLI
+│   ├── tools/             # Tool usage examples
+│   │   ├── brave_search/  # Web search using Brave Search API
+│   │   ├── datetime/      # Date/time manipulation tools
+│   │   ├── feed/          # RSS feed processing tools
+│   │   ├── news_api/      # News search using NewsAPI.org
+│   │   ├── research_paper_api/ # Academic paper search
+│   │   └── web/           # Web scraping tools
+│   └── workflows/         # Workflow examples
+│       └── basic/         # Basic workflow pattern
 ├── docs/                  # Documentation
 ├── test/                  # Integration tests
 └── vendor/                # Vendored dependencies
@@ -293,25 +296,36 @@ The `examples/` directory contains working demonstrations:
 make run-examples
 
 # Or run individually
-./bin/basic_agent  
-./bin/basic_workflow
-./bin/brave_search
-./bin/datetime_tools
-./bin/feed_tools
-./bin/news_api
-./bin/search_research
-./bin/web_tools
+cd examples/agents/research_papers && go run main.go -query "AI research"
+cd examples/workflows/basic && go run main.go
+cd examples/tools/datetime && go run main.go
+cd examples/tools/feed && go run main.go
+cd examples/tools/web && go run main.go
+cd examples/tools/news_api && go run main.go
+cd examples/tools/brave_search && go run main.go
+cd examples/tools/research_paper_api && go run main.go
 ```
 
-Examples cover:
-- **basic_agent/**: Agent usage with tool integration
-- **basic_workflow/**: Multi-step workflow orchestration
+Examples are organized by component type:
+
+### Agent Examples (`examples/agents/`)
+- **research_papers/**: Complete Research Papers Agent implementation with CLI interface, demonstrating:
+  - Agent creation with LLM provider integration
+  - Tool usage (ResearchPaperAPI, FetchWebPage, ExtractMetadata)
+  - Multiple output formats (Markdown, JSON, Text)
+  - Command-line interface patterns
+  - Environment-based configuration
+
+### Tool Examples (`examples/tools/`)
 - **brave_search/**: Web search using Brave Search API with AI summaries
-- **datetime_tools/**: Complete datetime tools demonstration
-- **feed_tools/**: RSS feed fetching with concurrent processing
+- **datetime/**: Complete datetime tools demonstration
+- **feed/**: RSS feed fetching with concurrent processing
 - **news_api/**: News search using NewsAPI.org integration
-- **search_research/**: Academic paper search across arXiv, PubMed, and CORE
-- **web_tools/**: Web scraping, link extraction, and metadata extraction
+- **research_paper_api/**: Academic paper search across arXiv, PubMed, and CORE
+- **web/**: Web scraping, link extraction, and metadata extraction
+
+### Workflow Examples (`examples/workflows/`)
+- **basic/**: Multi-step workflow orchestration
 
 ## Contributing
 

@@ -141,10 +141,15 @@ security: ## Run security checks (requires gosec)
 .PHONY: build-examples
 build-examples: ## Build example programs
 	@echo "Building examples..."
-	@for dir in examples/*/; do \
-		if [ -f "$$dir/main.go" ]; then \
-			echo "Building $$dir..."; \
-			(cd "$$dir" && go build -o "../../bin/$$(basename $$dir)" .); \
+	@for category in agents tools workflows; do \
+		if [ -d "examples/$$category" ]; then \
+			for dir in examples/$$category/*/; do \
+				if [ -f "$$dir/main.go" ]; then \
+					echo "Building $$dir..."; \
+					example_name=$$(basename $$dir); \
+					(cd "$$dir" && go build -o "../../../bin/$$category-$$example_name" .); \
+				fi \
+			done \
 		fi \
 	done
 
@@ -154,7 +159,7 @@ examples: build-examples ## Alias for build-examples
 .PHONY: run-examples  
 run-examples: build-examples ## Build and run all examples
 	@echo "Running examples..."
-	@for binary in bin/basic_* bin/*_tools; do \
+	@for binary in bin/agents-* bin/tools-* bin/workflows-*; do \
 		if [ -f "$$binary" ]; then \
 			echo "Running $$binary..."; \
 			./$$binary; \

@@ -15,16 +15,15 @@ Detailed documentation for all available tools organized by category:
 - [Data Tools](./tools/data.md) - Data transformation and processing (coming soon)
 
 ### [Agents Documentation](./agents/)
-Documentation for pre-configured agents:
-- [Research Agents](./agents/research.md) - Web research and fact-checking (coming soon)
-- [Code Agents](./agents/code.md) - Code analysis and generation (coming soon)
-- [Data Agents](./agents/data.md) - Data analysis and reporting (coming soon)
+Documentation for agent implementations:
+- [Research Papers Agent](./agents/research_papers.md) - Academic paper search and analysis
+- [CLI Examples](./agents/cli-examples.md) - Patterns for building agent CLIs
+- [Implementation Status](./agents/implementation-status.md) - Current agent development status
+- [Research Workflow Design](./agents/research-workflow-design.md) - Multi-agent research system design
 
 ### [Workflows Documentation](./workflows/)
 Documentation for workflow patterns:
-- [Research Workflows](./workflows/research.md) - Multi-source research patterns (coming soon)
-- [Deployment Workflows](./workflows/deployment.md) - CI/CD and deployment patterns (coming soon)
-- [Analysis Workflows](./workflows/analysis.md) - Data and code analysis patterns (coming soon)
+- [Research Workflow](./workflows/research-workflow.md) - Comprehensive research workflow design
 
 ### [Developer Guide](./developer/)
 - [Creating Custom Tools](./developer/creating-tools.md)

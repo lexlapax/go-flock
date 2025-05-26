@@ -456,11 +456,11 @@ uniqueResults := deduplicateByURL(allResults)
 summary := braveResults.Summary[0].Text
 ```
 
-### search_research
+### research_paper_api
 
 Searches for academic papers across multiple research databases (arXiv, PubMed, CORE) in parallel.
 
-**Tool Name:** `search_research`
+**Tool Name:** `research_paper_api`
 
 **Description:** Searches for academic papers across multiple research databases (arXiv, PubMed, CORE) in parallel
 
@@ -523,15 +523,15 @@ Searches for academic papers across multiple research databases (arXiv, PubMed, 
 #### Basic Research Search
 
 ```go
-tool := tools.NewSearchResearchTool()
+tool := tools.NewResearchPaperAPITool()
 
-params := tools.SearchResearchParams{
+params := tools.ResearchPaperAPIParams{
     Query:      "machine learning healthcare",
     MaxResults: 20,
 }
 
 result, err := tool.Execute(ctx, params)
-researchResult := result.(*tools.SearchResearchResult)
+researchResult := result.(*tools.ResearchPaperAPIResult)
 
 fmt.Printf("Found %d unique papers\n", researchResult.TotalResults)
 
@@ -546,7 +546,7 @@ for _, paper := range researchResult.Papers {
 #### Category-Specific Search
 
 ```go
-params := tools.SearchResearchParams{
+params := tools.ResearchPaperAPIParams{
     Query:      "neural networks",
     Categories: []string{"cs", "math"},
     MaxResults: 30,
@@ -557,7 +557,7 @@ params := tools.SearchResearchParams{
 #### Medical Research with Date Filter
 
 ```go
-params := tools.SearchResearchParams{
+params := tools.ResearchPaperAPIParams{
     Query:      "COVID-19 vaccines",
     Providers:  []string{"pubmed"},
     StartDate:  "2023-01-01",
@@ -569,7 +569,7 @@ params := tools.SearchResearchParams{
 #### Author-Specific Search
 
 ```go
-params := tools.SearchResearchParams{
+params := tools.ResearchPaperAPIParams{
     Query:   "deep learning",
     Authors: []string{"Geoffrey Hinton", "Yann LeCun"},
 }
@@ -578,7 +578,7 @@ params := tools.SearchResearchParams{
 #### CORE-Only Search with API Key
 
 ```go
-params := tools.SearchResearchParams{
+params := tools.ResearchPaperAPIParams{
     Query:       "climate change mitigation",
     Providers:   []string{"core"},
     CoreAPIKey:  "your-core-api-key", // or set CORE_API_KEY env var
@@ -626,7 +626,7 @@ The tool searches all selected providers in parallel for optimal performance:
 
 ```go
 // This searches arXiv, PubMed, and CORE simultaneously
-params := tools.SearchResearchParams{
+params := tools.ResearchPaperAPIParams{
     Query:      "artificial intelligence",
     MaxResults: 100, // 100 per provider
 }
@@ -642,13 +642,13 @@ The tool intelligently selects providers based on categories:
 
 ```go
 // Automatically uses arXiv for CS categories
-params := tools.SearchResearchParams{
+params := tools.ResearchPaperAPIParams{
     Query:      "algorithms",
     Categories: []string{"cs"},
 }
 
 // Automatically uses PubMed for medical categories
-params := tools.SearchResearchParams{
+params := tools.ResearchPaperAPIParams{
     Query:      "cancer treatment",
     Categories: []string{"medicine"},
 }
@@ -688,7 +688,7 @@ for _, provider := range result.Providers {
 
 ```go
 // Search for papers
-researchResults := searchResearch("machine learning healthcare")
+researchResults := researchPaperAPI("machine learning healthcare")
 
 // Download PDFs for open access papers
 for _, paper := range researchResults.Papers {

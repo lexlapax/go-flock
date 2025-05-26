@@ -768,11 +768,11 @@ func TestSearchWebBraveHandler_Pagination(t *testing.T) {
 
 // Research Search API Tests
 
-func TestNewSearchResearchTool(t *testing.T) {
-	tool := NewSearchResearchTool()
+func TestNewResearchPaperAPITool(t *testing.T) {
+	tool := NewResearchPaperAPITool()
 
-	if tool.Name() != "search_research" {
-		t.Errorf("Expected tool name 'search_research', got '%s'", tool.Name())
+	if tool.Name() != "research_paper_api" {
+		t.Errorf("Expected tool name 'research_paper_api', got '%s'", tool.Name())
 	}
 
 	expectedDesc := "Searches for academic papers across multiple research databases (arXiv, PubMed, CORE) in parallel"
@@ -784,10 +784,10 @@ func TestNewSearchResearchTool(t *testing.T) {
 // Research search tests are in api_tools_research_test.go
 
 func TestResearchToolRegistration(t *testing.T) {
-	tool := NewSearchResearchTool()
+	tool := NewResearchPaperAPITool()
 
-	if tool.Name() != "search_research" {
-		t.Errorf("Expected tool name 'search_research', got '%s'", tool.Name())
+	if tool.Name() != "research_paper_api" {
+		t.Errorf("Expected tool name 'research_paper_api', got '%s'", tool.Name())
 	}
 
 	if tool.Description() == "" {

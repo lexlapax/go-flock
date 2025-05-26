@@ -969,10 +969,10 @@ func intPtr(i int) *int {
 	return &i
 }
 
-// Research Search API Implementation
+// Research Paper API Implementation
 
 // Tool Parameters
-type SearchResearchParams struct {
+type ResearchPaperAPIParams struct {
 	Query      string   `json:"query" description:"Search query for research papers"`
 	MaxResults int      `json:"max_results,omitempty" description:"Maximum results per provider (default: 10)"`
 	StartDate  string   `json:"start_date,omitempty" description:"Filter papers from this date (YYYY-MM-DD)"`
@@ -986,7 +986,7 @@ type SearchResearchParams struct {
 }
 
 // Tool Results
-type SearchResearchResult struct {
+type ResearchPaperAPIResult struct {
 	Query        string          `json:"query"`
 	TotalResults int             `json:"total_results"`
 	Papers       []ResearchPaper `json:"papers"`
@@ -1022,7 +1022,7 @@ type ProviderInfo struct {
 }
 
 // Schema definition
-var SearchResearchParamSchema = &sdomain.Schema{
+var ResearchPaperAPIParamSchema = &sdomain.Schema{
 	Type:        "object",
 	Description: "Parameters for searching academic research papers",
 	Properties: map[string]sdomain.Property{
@@ -1085,13 +1085,13 @@ var SearchResearchParamSchema = &sdomain.Schema{
 	Required: []string{"query"},
 }
 
-// NewSearchResearchTool creates a new research search tool
-func NewSearchResearchTool() domain.Tool {
+// NewResearchPaperAPITool creates a new research paper API tool
+func NewResearchPaperAPITool() domain.Tool {
 	return tools.NewTool(
-		"search_research",
+		"research_paper_api",
 		"Searches for academic papers across multiple research databases (arXiv, PubMed, CORE) in parallel",
-		searchResearchHandler,
-		SearchResearchParamSchema,
+		researchPaperAPIHandler,
+		ResearchPaperAPIParamSchema,
 	)
 }
 
@@ -1102,7 +1102,7 @@ var (
 	coreAPIURL    = "https://api.core.ac.uk/v3/search/works"
 )
 
-func searchResearchHandler(ctx context.Context, params SearchResearchParams) (*SearchResearchResult, error) {
+func researchPaperAPIHandler(ctx context.Context, params ResearchPaperAPIParams) (*ResearchPaperAPIResult, error) {
 	// Validate required parameters
 	if strings.TrimSpace(params.Query) == "" {
 		return nil, fmt.Errorf("query parameter is required")
@@ -1191,7 +1191,7 @@ func searchResearchHandler(ctx context.Context, params SearchResearchParams) (*S
 	sortPapers(deduplicatedPapers, params.SortBy)
 
 	// Build result
-	result := &SearchResearchResult{
+	result := &ResearchPaperAPIResult{
 		Query:        params.Query,
 		TotalResults: len(deduplicatedPapers),
 		Papers:       deduplicatedPapers,
@@ -1203,7 +1203,7 @@ func searchResearchHandler(ctx context.Context, params SearchResearchParams) (*S
 }
 
 // selectProviders chooses which providers to search based on parameters
-func selectProviders(params SearchResearchParams) []string {
+func selectProviders(params ResearchPaperAPIParams) []string {
 	if len(params.Providers) > 0 {
 		return params.Providers
 	}
@@ -1280,7 +1280,7 @@ func sortPapers(papers []ResearchPaper, sortBy string) {
 	}
 }
 
-func searchArxiv(ctx context.Context, params SearchResearchParams) ([]ResearchPaper, error) {
+func searchArxiv(ctx context.Context, params ResearchPaperAPIParams) ([]ResearchPaper, error) {
 	// Build query parameters
 	query := url.Values{}
 	query.Set("search_query", params.Query)
@@ -1376,7 +1376,7 @@ func searchArxiv(ctx context.Context, params SearchResearchParams) ([]ResearchPa
 	return papers, nil
 }
 
-func searchPubMed(ctx context.Context, params SearchResearchParams) ([]ResearchPaper, error) {
+func searchPubMed(ctx context.Context, params ResearchPaperAPIParams) ([]ResearchPaper, error) {
 	// PubMed requires two API calls: esearch to get IDs, then efetch to get details
 
 	// First, search for IDs
@@ -1568,7 +1568,7 @@ func searchPubMed(ctx context.Context, params SearchResearchParams) ([]ResearchP
 	return papers, nil
 }
 
-func searchCORE(ctx context.Context, params SearchResearchParams) ([]ResearchPaper, error) {
+func searchCORE(ctx context.Context, params ResearchPaperAPIParams) ([]ResearchPaper, error) {
 	// Get API key
 	apiKey := os.Getenv("CORE_API_KEY")
 	if apiKey == "" {
