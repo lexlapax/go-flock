@@ -29,7 +29,7 @@ func InitLogger(debugMode bool) {
 		if debugMode {
 			level = slog.LevelDebug
 		}
-		
+
 		handler := slog.NewTextHandler(os.Stderr, &slog.HandlerOptions{
 			Level: level,
 		})
@@ -75,12 +75,12 @@ func convertArgs(args []interface{}) []any {
 	if len(args) == 0 {
 		return nil
 	}
-	
+
 	// If we have a single argument, treat it as a message
 	if len(args) == 1 {
 		return []any{slog.String("detail", fmt.Sprintf("%v", args[0]))}
 	}
-	
+
 	// Convert pairs to slog attributes
 	attrs := make([]any, 0, len(args))
 	for i := 0; i < len(args)-1; i += 2 {
@@ -88,12 +88,12 @@ func convertArgs(args []interface{}) []any {
 		value := args[i+1]
 		attrs = append(attrs, slog.Any(key, value))
 	}
-	
+
 	// If we have an odd number of args, add the last one as "extra"
 	if len(args)%2 != 0 {
 		attrs = append(attrs, slog.Any("extra", args[len(args)-1]))
 	}
-	
+
 	return attrs
 }
 
@@ -103,7 +103,7 @@ func SetDebugMode(enabled bool) {
 	if enabled {
 		level = slog.LevelDebug
 	}
-	
+
 	handler := slog.NewTextHandler(os.Stderr, &slog.HandlerOptions{
 		Level: level,
 	})

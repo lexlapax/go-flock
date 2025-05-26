@@ -7,7 +7,7 @@ import (
 	"context"
 	"log/slog"
 	"os"
-	
+
 	"github.com/lexlapax/go-flock/pkg/common"
 	"github.com/lexlapax/go-flock/pkg/tools"
 	"github.com/lexlapax/go-llms/pkg/agent/domain"
@@ -19,7 +19,7 @@ import (
 func NewResearchPapersAgent(provider ldomain.Provider, opts ...AgentOptions) domain.Agent {
 	logger := common.GetLogger()
 	ctx := context.Background()
-	
+
 	// Get options or use defaults
 	options := DefaultAgentOptions()
 	if len(opts) > 0 {
@@ -28,7 +28,7 @@ func NewResearchPapersAgent(provider ldomain.Provider, opts ...AgentOptions) dom
 
 	// Create base agent
 	agent := workflow.NewAgent(provider)
-	
+
 	// Add logging hook if debug mode is enabled
 	if os.Getenv("FLOCK_DEBUG") == "true" || os.Getenv("FLOCK_DEBUG") == "1" {
 		slogger := slog.New(slog.NewTextHandler(os.Stderr, &slog.HandlerOptions{
@@ -38,29 +38,30 @@ func NewResearchPapersAgent(provider ldomain.Provider, opts ...AgentOptions) dom
 		agent.WithHook(loggingHook)
 		logger.Debug(ctx, "Added debug logging hook to agent")
 	}
-	
+
 	// Add research-specific tools
 	researchTool := tools.NewResearchPaperAPITool()
 	fetchTool := tools.NewFetchWebPageTool()
 	metadataTool := tools.NewExtractMetadataTool()
-	
+
 	agent.AddTool(researchTool)
 	agent.AddTool(fetchTool)
 	agent.AddTool(metadataTool)
-	
-	logger.Debug(ctx, "Created ResearchPapersAgent with tools: %s, %s, %s", 
-		researchTool.Name(), fetchTool.Name(), metadataTool.Name())
+
+	logger.Debug(ctx, "Created ResearchPapersAgent", "tools", []string{
+		researchTool.Name(), fetchTool.Name(), metadataTool.Name(),
+	})
 
 	// Set model if specified
 	if options.Model != "" {
 		agent.WithModel(options.Model)
-		logger.Debug(ctx, "Set model to: %s", options.Model)
+		logger.Debug(ctx, "Set model", "model", options.Model)
 	}
 
 	// Set system prompt based on output format
 	prompt := getResearchPapersPrompt(options.OutputFormat)
 	agent.SetSystemPrompt(prompt)
-	logger.Debug(ctx, "Set output format to: %s", options.OutputFormat)
+	logger.Debug(ctx, "Set output format", "format", options.OutputFormat)
 
 	return agent
 }
@@ -77,7 +78,7 @@ func getResearchPapersPrompt(format OutputFormat) string {
 	default:
 		formatInstructions = formatInstructionsMarkdown
 	}
-	
+
 	return coreResearchPapersPrompt + "\n\n" + formatInstructions
 }
 
@@ -94,6 +95,9 @@ CRITICAL INSTRUCTIONS:
 2. DO NOT generate placeholder data or example papers - use ONLY real results from tool calls
 3. DO NOT show tool call JSON in your response - execute tools and show their results
 4. WAIT for tool results before continuing with your analysis
+5. When calling tools, the "arguments" field MUST be a JSON string, not an object. Example:
+   CORRECT: "arguments": "{\"query\": \"test\", \"max_results\": 5}"
+   WRONG: "arguments": {"query": "test", "max_results": 5}
 
 When given a research query:
 1. IMMEDIATELY call ResearchPaperAPI with appropriate parameters

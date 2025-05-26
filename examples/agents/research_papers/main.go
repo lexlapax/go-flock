@@ -79,7 +79,7 @@ func main() {
 
 	// Create LLM provider
 	ctx := context.Background()
-	logger.Debug(ctx, "Creating LLM provider: %s", *providerName)
+	logger.Debug(ctx, "Creating LLM provider", "provider", *providerName)
 	llmProvider, err := createProvider(*providerName)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error creating LLM provider: %v\n", err)
@@ -96,7 +96,7 @@ func main() {
 	}
 
 	// Create the research papers agent
-	logger.Debug(ctx, "Creating research papers agent with format: %s, model: %s", outputFormat, agentOpts.Model)
+	logger.Debug(ctx, "Creating research papers agent", "format", outputFormat, "model", agentOpts.Model)
 	agent := agents.NewResearchPapersAgent(llmProvider, agentOpts)
 
 	// Execute the search
@@ -107,10 +107,10 @@ func main() {
 	}
 	fmt.Fprintf(os.Stderr, "\nProcessing...\n\n")
 
-	logger.Debug(ctx, "Running agent with query: %s", *query)
+	logger.Debug(ctx, "Running agent", "query", *query)
 	result, err := agent.Run(ctx, *query)
 	if err != nil {
-		logger.Error(ctx, "Agent execution failed: %v", err)
+		logger.Error(ctx, "Agent execution failed", "error", err)
 		fmt.Fprintf(os.Stderr, "Error running agent: %v\n", err)
 		os.Exit(1)
 	}
