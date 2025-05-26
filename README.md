@@ -33,6 +33,8 @@ go-flock extends go-llms with specialized interfaces:
 - **Command Line Interface**: Explore and test functionality through the included CLI utility
 - **Build Automation**: Comprehensive Makefile with testing, benchmarks, and development workflows
 - **Example Usage**: Working examples demonstrating different usage patterns
+- **Debug Support**: Comprehensive logging with slog integration for troubleshooting
+- **Gemini Compatibility**: Special handling for tool calling with Google Gemini
 
 ## Installation
 
@@ -286,6 +288,7 @@ Comprehensive documentation is available in the `docs/` directory:
   - [Web Tools](docs/tools/web.md) - Web scraping, link extraction, and metadata tools
 - **[Developer Guides](docs/developer/)** - Guides for extending go-flock
   - [Creating Custom Tools](docs/developer/creating-tools.md) - Step-by-step guide for building new tools
+- **[Troubleshooting Guide](docs/troubleshooting.md)** - Common issues and solutions
 
 ## Examples
 
@@ -297,6 +300,9 @@ make run-examples
 
 # Or run individually
 cd examples/agents/research_papers && go run main.go -query "AI research"
+
+# With debug logging for troubleshooting
+cd examples/agents/research_papers && go run main.go -query "quantum computing" -debug
 cd examples/workflows/basic && go run main.go
 cd examples/tools/datetime && go run main.go
 cd examples/tools/feed && go run main.go
@@ -326,6 +332,26 @@ Examples are organized by component type:
 
 ### Workflow Examples (`examples/workflows/`)
 - **basic/**: Multi-step workflow orchestration
+
+## Debugging and Troubleshooting
+
+go-flock includes comprehensive debugging support:
+
+```bash
+# Enable debug logging globally
+export FLOCK_DEBUG=true
+
+# Or use debug flag in CLI tools
+./bin/research_papers -query "test" -debug
+```
+
+Debug logging provides:
+- Tool execution details
+- LLM communication logs
+- Agent workflow steps
+- Error diagnostics
+
+See the [Troubleshooting Guide](docs/troubleshooting.md) for common issues and solutions.
 
 ## Contributing
 

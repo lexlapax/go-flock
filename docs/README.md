@@ -31,6 +31,12 @@ Documentation for workflow patterns:
 - [Creating Custom Workflows](./developer/creating-workflows.md)
 - [Contributing Guidelines](./developer/contributing.md)
 
+### [Troubleshooting](./troubleshooting.md)
+- Common issues and solutions
+- Debug logging guide
+- Tool calling issues with different providers
+- API key configuration
+
 ## Quick Links
 
 - [Getting Started](../README.md#getting-started)

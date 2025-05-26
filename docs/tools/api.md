@@ -460,6 +460,10 @@ summary := braveResults.Summary[0].Text
 
 Searches for academic papers across multiple research databases (arXiv, PubMed, CORE) in parallel.
 
+#### Gemini Compatibility Note
+
+When using the Research Paper API with Google Gemini, the agent includes specific instructions to ensure proper tool call formatting. Gemini must return the `arguments` field as a JSON string (not an object) for compatibility with the go-llms tool extraction logic. This is handled automatically by the research papers agent.
+
 **Tool Name:** `research_paper_api`
 
 **Description:** Searches for academic papers across multiple research databases (arXiv, PubMed, CORE) in parallel
@@ -718,6 +722,7 @@ mediaVoverage := analyzeMediaCoverage(paper, newsResults)
 5. **Deduplication**: Results are automatically deduplicated
 6. **Error Handling**: Check provider-specific errors in results
 7. **Parallel Queries**: Default behavior for best performance
+8. **Debug Mode**: Use `FLOCK_DEBUG=true` or `-debug` flag to troubleshoot tool execution issues
 
 ## Future Enhancements
 

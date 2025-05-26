@@ -23,7 +23,22 @@ Examples showing how to use and implement agents:
 # Research Papers Agent (requires API keys)
 cd examples/agents/research_papers
 go run main.go -query "deep learning medical imaging"
+
+# With debug logging enabled
+go run main.go -query "quantum computing" -debug
+
+# Using specific provider
+go run main.go -query "climate change" -provider gemini -debug
 ```
+
+#### Debug Mode
+
+The research papers agent supports debug logging to help troubleshoot issues:
+
+- Use the `-debug` flag to enable debug logging
+- Or set the `FLOCK_DEBUG=true` environment variable
+- Debug logs include tool execution details, LLM responses, and agent workflow
+- Logs are written to stderr to avoid interfering with stdout output
 
 ### Tool Examples
 
@@ -108,6 +123,9 @@ export GEMINI_API_KEY=your_key
 # For specific tools
 export NEWS_API_KEY=your_newsapi_key
 export BRAVE_API_KEY=your_brave_api_key
+
+# For debugging (optional)
+export FLOCK_DEBUG=true  # Enable debug logging globally
 ```
 
 ## Quick Start
