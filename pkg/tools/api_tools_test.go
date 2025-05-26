@@ -8,6 +8,7 @@ import (
 	"encoding/json"
 	"net/http"
 	"net/http/httptest"
+	"strings"
 	"testing"
 	"time"
 )
@@ -349,5 +350,418 @@ func TestSearchNewsAPIHandler_InvalidJSON(t *testing.T) {
 
 	if err == nil {
 		t.Error("Expected error for invalid JSON")
+	}
+}
+
+// Brave Search API Tests
+
+func TestNewSearchWebBraveTool(t *testing.T) {
+	tool := NewSearchWebBraveTool()
+
+	if tool.Name() != "search_web_brave" {
+		t.Errorf("Expected tool name 'search_web_brave', got '%s'", tool.Name())
+	}
+
+	if tool.Description() != "Performs web search using Brave Search API with support for multiple content types, AI summaries, and advanced filtering" {
+		t.Errorf("Unexpected tool description: %s", tool.Description())
+	}
+}
+
+func TestSearchWebBraveHandler_Success(t *testing.T) {
+	// Create mock server
+	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		// Verify request
+		if r.Method != "GET" {
+			t.Errorf("Expected GET request, got %s", r.Method)
+		}
+
+		// Check headers
+		if r.Header.Get("X-Subscription-Token") != "test-api-key" {
+			t.Errorf("Expected X-Subscription-Token header")
+		}
+
+		// Check query parameters
+		q := r.URL.Query()
+		if q.Get("q") != "artificial intelligence" {
+			t.Errorf("Expected query 'artificial intelligence', got '%s'", q.Get("q"))
+		}
+		if q.Get("count") != "10" {
+			t.Errorf("Expected count '10', got '%s'", q.Get("count"))
+		}
+
+		// Send mock response
+		response := map[string]any{
+			"query": map[string]any{
+				"original": "artificial intelligence",
+			},
+			"type": "search",
+			"mixed": map[string]any{
+				"type": "mixed",
+				"main": []map[string]any{
+					{
+						"type":  "web",
+						"index": 0,
+					},
+					{
+						"type":  "news",
+						"index": 0,
+					},
+				},
+			},
+			"web": map[string]any{
+				"type": "search",
+				"results": []map[string]any{
+					{
+						"title":       "What is Artificial Intelligence?",
+						"url":         "https://example.com/ai-intro",
+						"description": "Learn about AI and machine learning",
+						"age":         "2 days ago",
+						"language":    "en",
+					},
+					{
+						"title":       "AI Research Papers",
+						"url":         "https://example.com/ai-research",
+						"description": "Latest research in artificial intelligence",
+						"thumbnail": map[string]any{
+							"src":    "https://example.com/thumb.jpg",
+							"height": 200,
+							"width":  300,
+						},
+					},
+				},
+			},
+			"news": map[string]any{
+				"type": "news",
+				"results": []map[string]any{
+					{
+						"title":       "AI Breakthrough Announced",
+						"url":         "https://news.example.com/ai-breakthrough",
+						"description": "Major advancement in AI technology",
+						"age":         "3 hours ago",
+						"source": map[string]any{
+							"name": "Tech News",
+							"url":  "https://technews.com",
+						},
+					},
+				},
+			},
+		}
+
+		w.Header().Set("Content-Type", "application/json")
+		if err := json.NewEncoder(w).Encode(response); err != nil {
+			t.Errorf("Failed to encode response: %v", err)
+		}
+	}))
+	defer server.Close()
+
+	// Override Brave API URL for testing
+	originalURL := braveSearchURL
+	braveSearchURL = server.URL + "/res/v1/web/search"
+	defer func() { braveSearchURL = originalURL }()
+
+	params := SearchWebBraveParams{
+		Query:  "artificial intelligence",
+		APIKey: "test-api-key",
+		Count:  10,
+	}
+
+	ctx := context.Background()
+	result, err := searchWebBraveHandler(ctx, params)
+
+	if err != nil {
+		t.Fatalf("Unexpected error: %v", err)
+	}
+
+	// Verify results
+	if result.Query != "artificial intelligence" {
+		t.Errorf("Expected query 'artificial intelligence', got '%s'", result.Query)
+	}
+	if result.Type != "search" {
+		t.Errorf("Expected type 'search', got '%s'", result.Type)
+	}
+	if len(result.Web.Results) != 2 {
+		t.Errorf("Expected 2 web results, got %d", len(result.Web.Results))
+	}
+	if len(result.News.Results) != 1 {
+		t.Errorf("Expected 1 news result, got %d", len(result.News.Results))
+	}
+
+	// Check web result details
+	if len(result.Web.Results) > 0 {
+		webResult := result.Web.Results[0]
+		if webResult.Title != "What is Artificial Intelligence?" {
+			t.Errorf("Unexpected web result title: %s", webResult.Title)
+		}
+		if webResult.URL != "https://example.com/ai-intro" {
+			t.Errorf("Unexpected web result URL: %s", webResult.URL)
+		}
+	}
+}
+
+func TestSearchWebBraveHandler_WithFilters(t *testing.T) {
+	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		// Check filter parameters
+		q := r.URL.Query()
+		if q.Get("safesearch") != "moderate" {
+			t.Errorf("Expected safesearch 'moderate', got '%s'", q.Get("safesearch"))
+		}
+		if q.Get("freshness") != "pd" {
+			t.Errorf("Expected freshness 'pd', got '%s'", q.Get("freshness"))
+		}
+		if q.Get("country") != "US" {
+			t.Errorf("Expected country 'US', got '%s'", q.Get("country"))
+		}
+		if q.Get("search_lang") != "en" {
+			t.Errorf("Expected search_lang 'en', got '%s'", q.Get("search_lang"))
+		}
+		if q.Get("result_filter") != "web,news" {
+			t.Errorf("Expected result_filter 'web,news', got '%s'", q.Get("result_filter"))
+		}
+
+		// Send response
+		response := map[string]any{
+			"query": map[string]any{
+				"original": "technology",
+			},
+			"type": "search",
+			"web": map[string]any{
+				"type": "search",
+				"results": []map[string]any{
+					{
+						"title":       "Latest Tech News",
+						"url":         "https://example.com/tech",
+						"description": "Technology updates",
+					},
+				},
+			},
+		}
+
+		w.Header().Set("Content-Type", "application/json")
+		if err := json.NewEncoder(w).Encode(response); err != nil {
+			t.Errorf("Failed to encode response: %v", err)
+		}
+	}))
+	defer server.Close()
+
+	originalURL := braveSearchURL
+	braveSearchURL = server.URL + "/res/v1/web/search"
+	defer func() { braveSearchURL = originalURL }()
+
+	params := SearchWebBraveParams{
+		Query:        "technology",
+		APIKey:       "test-api-key",
+		Country:      "US",
+		SearchLang:   "en",
+		SafeSearch:   "moderate",
+		Freshness:    "pd",
+		ResultFilter: []string{"web", "news"},
+	}
+
+	ctx := context.Background()
+	result, err := searchWebBraveHandler(ctx, params)
+
+	if err != nil {
+		t.Fatalf("Unexpected error: %v", err)
+	}
+
+	if len(result.Web.Results) != 1 {
+		t.Errorf("Expected 1 result, got %d", len(result.Web.Results))
+	}
+}
+
+func TestSearchWebBraveHandler_WithAISummary(t *testing.T) {
+	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		// Check AI summary parameter
+		q := r.URL.Query()
+		if q.Get("summary") != "true" {
+			t.Errorf("Expected summary 'true', got '%s'", q.Get("summary"))
+		}
+
+		// Send response with AI summary
+		response := map[string]any{
+			"query": map[string]any{
+				"original": "climate change",
+			},
+			"type": "search",
+			"summary": []map[string]any{
+				{
+					"type": "summary",
+					"key":  "brave_search_llm_summary",
+					"text": "Climate change refers to long-term shifts in global temperatures and weather patterns.",
+					"enrichments": map[string]any{
+						"raw": true,
+					},
+				},
+			},
+			"web": map[string]any{
+				"type": "search",
+				"results": []map[string]any{
+					{
+						"title":       "Understanding Climate Change",
+						"url":         "https://example.com/climate",
+						"description": "Comprehensive guide to climate science",
+					},
+				},
+			},
+		}
+
+		w.Header().Set("Content-Type", "application/json")
+		if err := json.NewEncoder(w).Encode(response); err != nil {
+			t.Errorf("Failed to encode response: %v", err)
+		}
+	}))
+	defer server.Close()
+
+	originalURL := braveSearchURL
+	braveSearchURL = server.URL + "/res/v1/web/search"
+	defer func() { braveSearchURL = originalURL }()
+
+	params := SearchWebBraveParams{
+		Query:   "climate change",
+		APIKey:  "test-api-key",
+		Summary: true,
+	}
+
+	ctx := context.Background()
+	result, err := searchWebBraveHandler(ctx, params)
+
+	if err != nil {
+		t.Fatalf("Unexpected error: %v", err)
+	}
+
+	if len(result.Summary) == 0 {
+		t.Error("Expected AI summary in results")
+	}
+
+	if len(result.Summary) > 0 && result.Summary[0].Text != "Climate change refers to long-term shifts in global temperatures and weather patterns." {
+		t.Errorf("Unexpected summary text: %s", result.Summary[0].Text)
+	}
+}
+
+func TestSearchWebBraveHandler_EmptyQuery(t *testing.T) {
+	params := SearchWebBraveParams{
+		Query:  "",
+		APIKey: "test-api-key",
+	}
+
+	ctx := context.Background()
+	_, err := searchWebBraveHandler(ctx, params)
+
+	if err == nil {
+		t.Error("Expected error for empty query")
+	}
+}
+
+func TestSearchWebBraveHandler_QueryTooLong(t *testing.T) {
+	// Create a query longer than 400 characters
+	longQuery := strings.Repeat("test ", 100)
+
+	params := SearchWebBraveParams{
+		Query:  longQuery,
+		APIKey: "test-api-key",
+	}
+
+	ctx := context.Background()
+	_, err := searchWebBraveHandler(ctx, params)
+
+	if err == nil {
+		t.Error("Expected error for query too long")
+	}
+	if !strings.Contains(err.Error(), "exceeds 400 character limit") {
+		t.Errorf("Expected error about character limit, got: %v", err)
+	}
+}
+
+func TestSearchWebBraveHandler_APIError(t *testing.T) {
+	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		// Send error response
+		w.WriteHeader(http.StatusUnauthorized)
+		response := map[string]any{
+			"type": "error",
+			"code": 401,
+			"details": []map[string]any{
+				{
+					"type":   "error",
+					"code":   "invalid_api_key",
+					"detail": "Invalid API key",
+				},
+			},
+		}
+
+		w.Header().Set("Content-Type", "application/json")
+		if err := json.NewEncoder(w).Encode(response); err != nil {
+			t.Errorf("Failed to encode response: %v", err)
+		}
+	}))
+	defer server.Close()
+
+	originalURL := braveSearchURL
+	braveSearchURL = server.URL + "/res/v1/web/search"
+	defer func() { braveSearchURL = originalURL }()
+
+	params := SearchWebBraveParams{
+		Query:  "test",
+		APIKey: "invalid-key",
+	}
+
+	ctx := context.Background()
+	_, err := searchWebBraveHandler(ctx, params)
+
+	if err == nil {
+		t.Error("Expected error for API error response")
+	}
+	if !strings.Contains(err.Error(), "Invalid API key") {
+		t.Errorf("Unexpected error message: %v", err)
+	}
+}
+
+func TestSearchWebBraveHandler_Pagination(t *testing.T) {
+	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		q := r.URL.Query()
+		if q.Get("offset") != "20" {
+			t.Errorf("Expected offset '20', got '%s'", q.Get("offset"))
+		}
+		if q.Get("count") != "20" {
+			t.Errorf("Expected count '20', got '%s'", q.Get("count"))
+		}
+
+		response := map[string]any{
+			"query": map[string]any{
+				"original": "test",
+			},
+			"type": "search",
+			"web": map[string]any{
+				"type":    "search",
+				"results": []map[string]any{},
+			},
+		}
+
+		w.Header().Set("Content-Type", "application/json")
+		if err := json.NewEncoder(w).Encode(response); err != nil {
+			t.Errorf("Failed to encode response: %v", err)
+		}
+	}))
+	defer server.Close()
+
+	originalURL := braveSearchURL
+	braveSearchURL = server.URL + "/res/v1/web/search"
+	defer func() { braveSearchURL = originalURL }()
+
+	params := SearchWebBraveParams{
+		Query:  "test",
+		APIKey: "test-key",
+		Count:  20,
+		Offset: 20,
+	}
+
+	ctx := context.Background()
+	result, err := searchWebBraveHandler(ctx, params)
+
+	if err != nil {
+		t.Fatalf("Unexpected error: %v", err)
+	}
+
+	if result.Query != "test" {
+		t.Errorf("Expected query 'test', got '%s'", result.Query)
 	}
 }

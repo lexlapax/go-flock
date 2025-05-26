@@ -42,6 +42,12 @@ cd examples/news_api
 go run main.go
 ```
 
+### Brave Search (Web Search with AI Summaries)
+```bash
+cd examples/brave_search
+go run main.go
+```
+
 ## Example Categories
 
 - **basic_agent/**: Shows the pattern for specialized agents  
@@ -50,6 +56,7 @@ go run main.go
 - **feed_tools/**: Demonstrates RSS feed fetching and processing capabilities
 - **web_tools/**: Shows web page fetching and link extraction tools
 - **news_api/**: Demonstrates news search using NewsAPI.org integration
+- **brave_search/**: Demonstrates web search with AI summaries using Brave Search API
 
 ## Tool Naming Convention
 

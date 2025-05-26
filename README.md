@@ -303,6 +303,7 @@ Examples cover:
 - **feed_tools/**: RSS feed fetching with concurrent processing
 - **web_tools/**: Web scraping, link extraction, and metadata extraction
 - **news_api/**: News search using NewsAPI.org integration
+- **brave_search/**: Web search using Brave Search API with AI summaries
 
 ## Contributing
 
