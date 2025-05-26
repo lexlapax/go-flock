@@ -236,8 +236,11 @@ go-flock/
 ├── examples/              # Working usage examples
 │   ├── basic_agent/       # Agent usage example
 │   ├── basic_workflow/    # Workflow orchestration example
+│   ├── brave_search/      # Web search using Brave Search API
 │   ├── datetime_tools/    # Date/time manipulation tools
 │   ├── feed_tools/        # RSS feed processing tools
+│   ├── news_api/          # News search using NewsAPI.org
+│   ├── search_research/   # Academic paper search across multiple databases
 │   └── web_tools/         # Web scraping and extraction tools
 ├── docs/                  # Documentation
 ├── test/                  # Integration tests
@@ -274,6 +277,7 @@ Comprehensive documentation is available in the `docs/` directory:
 
 - **[Documentation Index](docs/README.md)** - Main documentation overview
 - **[Tools Documentation](docs/tools/)** - Detailed documentation for all available tools
+  - [API Tools](docs/tools/api.md) - External API integrations (News, Brave Search, Research)
   - [Datetime Tools](docs/tools/datetime.md) - Date and time manipulation utilities
   - [Feed Tools](docs/tools/feed.md) - RSS/Atom feed fetching and processing
   - [Web Tools](docs/tools/web.md) - Web scraping, link extraction, and metadata tools
@@ -291,19 +295,23 @@ make run-examples
 # Or run individually
 ./bin/basic_agent  
 ./bin/basic_workflow
+./bin/brave_search
 ./bin/datetime_tools
 ./bin/feed_tools
+./bin/news_api
+./bin/search_research
 ./bin/web_tools
 ```
 
 Examples cover:
 - **basic_agent/**: Agent usage with tool integration
 - **basic_workflow/**: Multi-step workflow orchestration
+- **brave_search/**: Web search using Brave Search API with AI summaries
 - **datetime_tools/**: Complete datetime tools demonstration
 - **feed_tools/**: RSS feed fetching with concurrent processing
-- **web_tools/**: Web scraping, link extraction, and metadata extraction
 - **news_api/**: News search using NewsAPI.org integration
-- **brave_search/**: Web search using Brave Search API with AI summaries
+- **search_research/**: Academic paper search across arXiv, PubMed, and CORE
+- **web_tools/**: Web scraping, link extraction, and metadata extraction
 
 ## Contributing
 

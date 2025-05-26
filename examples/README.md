@@ -48,6 +48,12 @@ cd examples/brave_search
 go run main.go
 ```
 
+### Search Research (Multi-Source Research)
+```bash
+cd examples/search_research
+go run main.go
+```
+
 ## Example Categories
 
 - **basic_agent/**: Shows the pattern for specialized agents  
@@ -57,6 +63,7 @@ go run main.go
 - **web_tools/**: Shows web page fetching and link extraction tools
 - **news_api/**: Demonstrates news search using NewsAPI.org integration
 - **brave_search/**: Demonstrates web search with AI summaries using Brave Search API
+- **search_research/**: Demonstrates multi-source research combining Brave Search and News API
 
 ## Tool Naming Convention
 

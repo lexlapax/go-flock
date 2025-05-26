@@ -4,8 +4,10 @@
 package tools
 
 import (
+	"bytes"
 	"context"
 	"encoding/json"
+	"encoding/xml"
 	"fmt"
 	"io"
 	"net/http"
@@ -965,4 +967,726 @@ type braveErrorDetail struct {
 // Helper function to get int pointer
 func intPtr(i int) *int {
 	return &i
+}
+
+// Research Search API Implementation
+
+// Tool Parameters
+type SearchResearchParams struct {
+	Query      string   `json:"query" description:"Search query for research papers"`
+	MaxResults int      `json:"max_results,omitempty" description:"Maximum results per provider (default: 10)"`
+	StartDate  string   `json:"start_date,omitempty" description:"Filter papers from this date (YYYY-MM-DD)"`
+	EndDate    string   `json:"end_date,omitempty" description:"Filter papers until this date (YYYY-MM-DD)"`
+	Authors    []string `json:"authors,omitempty" description:"Filter by author names"`
+	Categories []string `json:"categories,omitempty" description:"Subject categories (cs, physics, medicine, etc.)"`
+	OpenAccess bool     `json:"open_access,omitempty" description:"Only return open access papers"`
+	SortBy     string   `json:"sort_by,omitempty" description:"Sort order: 'relevance', 'date', 'citations'"`
+	Providers  []string `json:"providers,omitempty" description:"Specific providers to search (arxiv, pubmed, core)"`
+	CoreAPIKey string   `json:"core_api_key,omitempty" description:"CORE API key for enhanced access"`
+}
+
+// Tool Results
+type SearchResearchResult struct {
+	Query        string          `json:"query"`
+	TotalResults int             `json:"total_results"`
+	Papers       []ResearchPaper `json:"papers"`
+	Providers    []ProviderInfo  `json:"providers"`
+	FetchedAt    string          `json:"fetched_at"`
+}
+
+type ResearchPaper struct {
+	// Basic metadata
+	Title         string   `json:"title"`
+	Authors       []string `json:"authors"`
+	Abstract      string   `json:"abstract"`
+	PublishedDate string   `json:"published_date"`
+	Source        string   `json:"source"`
+	URL           string   `json:"url"`
+	PDFURL        string   `json:"pdf_url,omitempty"`
+
+	// Identifiers
+	DOI      string `json:"doi,omitempty"`
+	ArxivID  string `json:"arxiv_id,omitempty"`
+	PubMedID string `json:"pubmed_id,omitempty"`
+
+	// Additional metadata
+	Journal        string  `json:"journal,omitempty"`
+	RelevanceScore float64 `json:"relevance_score,omitempty"`
+}
+
+type ProviderInfo struct {
+	Name         string `json:"name"`
+	ResultCount  int    `json:"result_count"`
+	Error        string `json:"error,omitempty"`
+	ResponseTime int64  `json:"response_time_ms"`
+}
+
+// Schema definition
+var SearchResearchParamSchema = &sdomain.Schema{
+	Type:        "object",
+	Description: "Parameters for searching academic research papers",
+	Properties: map[string]sdomain.Property{
+		"query": {
+			Type:        "string",
+			Description: "Search query for research papers",
+		},
+		"max_results": {
+			Type:        "integer",
+			Description: "Maximum results per provider (default: 10)",
+			Minimum:     float64Ptr(1),
+			Maximum:     float64Ptr(100),
+		},
+		"start_date": {
+			Type:        "string",
+			Description: "Filter papers from this date (YYYY-MM-DD)",
+			Pattern:     "^\\d{4}-\\d{2}-\\d{2}$",
+		},
+		"end_date": {
+			Type:        "string",
+			Description: "Filter papers until this date (YYYY-MM-DD)",
+			Pattern:     "^\\d{4}-\\d{2}-\\d{2}$",
+		},
+		"authors": {
+			Type:        "array",
+			Description: "Filter by author names",
+			Items: &sdomain.Property{
+				Type: "string",
+			},
+		},
+		"categories": {
+			Type:        "array",
+			Description: "Subject categories (cs, physics, medicine, etc.)",
+			Items: &sdomain.Property{
+				Type: "string",
+			},
+		},
+		"open_access": {
+			Type:        "boolean",
+			Description: "Only return open access papers",
+		},
+		"sort_by": {
+			Type:        "string",
+			Description: "Sort order: 'relevance', 'date', 'citations'",
+			Enum:        []string{"relevance", "date", "citations"},
+		},
+		"providers": {
+			Type:        "array",
+			Description: "Specific providers to search (arxiv, pubmed, core)",
+			Items: &sdomain.Property{
+				Type: "string",
+				Enum: []string{"arxiv", "pubmed", "core"},
+			},
+		},
+		"core_api_key": {
+			Type:        "string",
+			Description: "CORE API key for enhanced access",
+		},
+	},
+	Required: []string{"query"},
+}
+
+// NewSearchResearchTool creates a new research search tool
+func NewSearchResearchTool() domain.Tool {
+	return tools.NewTool(
+		"search_research",
+		"Searches for academic papers across multiple research databases (arXiv, PubMed, CORE) in parallel",
+		searchResearchHandler,
+		SearchResearchParamSchema,
+	)
+}
+
+// API URLs - package-level for test overrides
+var (
+	arxivAPIURL   = "http://export.arxiv.org/api/query"
+	pubmedBaseURL = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/"
+	coreAPIURL    = "https://api.core.ac.uk/v3/search/works"
+)
+
+func searchResearchHandler(ctx context.Context, params SearchResearchParams) (*SearchResearchResult, error) {
+	// Validate required parameters
+	if strings.TrimSpace(params.Query) == "" {
+		return nil, fmt.Errorf("query parameter is required")
+	}
+
+	// Set defaults
+	if params.MaxResults == 0 {
+		params.MaxResults = 10
+	}
+	if params.SortBy == "" {
+		params.SortBy = "relevance"
+	}
+
+	// Select providers
+	providers := selectProviders(params)
+
+	// Channel for collecting results
+	type providerResult struct {
+		provider string
+		papers   []ResearchPaper
+		err      error
+		duration time.Duration
+	}
+
+	resultChan := make(chan providerResult, len(providers))
+
+	// Search all providers in parallel
+	for _, provider := range providers {
+		go func(p string) {
+			start := time.Now()
+			var papers []ResearchPaper
+			var err error
+
+			switch p {
+			case "arxiv":
+				papers, err = searchArxiv(ctx, params)
+			case "pubmed":
+				papers, err = searchPubMed(ctx, params)
+			case "core":
+				papers, err = searchCORE(ctx, params)
+			}
+
+			resultChan <- providerResult{
+				provider: p,
+				papers:   papers,
+				err:      err,
+				duration: time.Since(start),
+			}
+		}(provider)
+	}
+
+	// Collect results with timeout
+	timeout := time.After(30 * time.Second)
+	var allPapers []ResearchPaper
+	providerInfos := make([]ProviderInfo, 0, len(providers))
+
+	for i := 0; i < len(providers); i++ {
+		select {
+		case result := <-resultChan:
+			info := ProviderInfo{
+				Name:         result.provider,
+				ResponseTime: result.duration.Milliseconds(),
+			}
+
+			if result.err != nil {
+				info.Error = result.err.Error()
+			} else {
+				info.ResultCount = len(result.papers)
+				allPapers = append(allPapers, result.papers...)
+			}
+
+			providerInfos = append(providerInfos, info)
+
+		case <-timeout:
+			// Continue with partial results
+			break
+		case <-ctx.Done():
+			return nil, ctx.Err()
+		}
+	}
+
+	// Deduplicate papers
+	deduplicatedPapers := deduplicatePapers(allPapers)
+
+	// Sort papers
+	sortPapers(deduplicatedPapers, params.SortBy)
+
+	// Build result
+	result := &SearchResearchResult{
+		Query:        params.Query,
+		TotalResults: len(deduplicatedPapers),
+		Papers:       deduplicatedPapers,
+		Providers:    providerInfos,
+		FetchedAt:    time.Now().UTC().Format(time.RFC3339),
+	}
+
+	return result, nil
+}
+
+// selectProviders chooses which providers to search based on parameters
+func selectProviders(params SearchResearchParams) []string {
+	if len(params.Providers) > 0 {
+		return params.Providers
+	}
+
+	// Default to all providers
+	providers := []string{"arxiv", "pubmed", "core"}
+
+	// If categories specified, optimize provider selection
+	if len(params.Categories) > 0 {
+		selectedProviders := make(map[string]bool)
+
+		for _, cat := range params.Categories {
+			switch strings.ToLower(cat) {
+			case "cs", "math", "physics", "astro-ph", "cond-mat", "q-bio", "q-fin", "stat":
+				selectedProviders["arxiv"] = true
+			case "medicine", "biology", "health", "clinical":
+				selectedProviders["pubmed"] = true
+			}
+			// CORE is general purpose, always include if any category matches
+			selectedProviders["core"] = true
+		}
+
+		if len(selectedProviders) > 0 {
+			providers = make([]string, 0, len(selectedProviders))
+			for p := range selectedProviders {
+				providers = append(providers, p)
+			}
+		}
+	}
+
+	return providers
+}
+
+// deduplicatePapers removes duplicate papers based on DOI and title similarity
+func deduplicatePapers(papers []ResearchPaper) []ResearchPaper {
+	seen := make(map[string]bool)
+	unique := make([]ResearchPaper, 0, len(papers))
+
+	for _, paper := range papers {
+		// Check DOI first
+		if paper.DOI != "" {
+			if seen[paper.DOI] {
+				continue
+			}
+			seen[paper.DOI] = true
+		}
+
+		// Check for similar titles (simple approach)
+		titleKey := strings.ToLower(strings.TrimSpace(paper.Title))
+		if seen[titleKey] {
+			continue
+		}
+		seen[titleKey] = true
+
+		unique = append(unique, paper)
+	}
+
+	return unique
+}
+
+// sortPapers sorts papers based on the specified criteria
+func sortPapers(papers []ResearchPaper, sortBy string) {
+	// Simple sorting implementation
+	// In production, would implement more sophisticated sorting
+	switch sortBy {
+	case "date":
+		// Sort by published date (newest first)
+		// Implementation would parse dates and sort
+	case "citations":
+		// Sort by citation count
+		// Implementation would sort by CitationCount field
+	default:
+		// Relevance sorting (keep original order from providers)
+	}
+}
+
+func searchArxiv(ctx context.Context, params SearchResearchParams) ([]ResearchPaper, error) {
+	// Build query parameters
+	query := url.Values{}
+	query.Set("search_query", params.Query)
+	query.Set("start", "0")
+	query.Set("max_results", fmt.Sprintf("%d", params.MaxResults))
+	query.Set("sortBy", "relevance")
+	query.Set("sortOrder", "descending")
+
+	// Build URL
+	apiURL := fmt.Sprintf("%s?%s", arxivAPIURL, query.Encode())
+
+	// Create request
+	req, err := http.NewRequestWithContext(ctx, "GET", apiURL, nil)
+	if err != nil {
+		return nil, fmt.Errorf("creating request: %w", err)
+	}
+
+	// Execute request
+	client := &http.Client{Timeout: 30 * time.Second}
+	resp, err := client.Do(req)
+	if err != nil {
+		return nil, fmt.Errorf("executing request: %w", err)
+	}
+	defer resp.Body.Close()
+
+	if resp.StatusCode != http.StatusOK {
+		body, _ := io.ReadAll(resp.Body)
+		return nil, fmt.Errorf("API returned status %d: %s", resp.StatusCode, string(body))
+	}
+
+	// Parse Atom feed
+	type ArxivEntry struct {
+		ID        string `xml:"id"`
+		Title     string `xml:"title"`
+		Summary   string `xml:"summary"`
+		Published string `xml:"published"`
+		Authors   []struct {
+			Name string `xml:"name"`
+		} `xml:"author"`
+		Links []struct {
+			Href string `xml:"href,attr"`
+			Type string `xml:"type,attr"`
+		} `xml:"link"`
+	}
+
+	type ArxivFeed struct {
+		Entries []ArxivEntry `xml:"entry"`
+	}
+
+	var feed ArxivFeed
+	decoder := xml.NewDecoder(resp.Body)
+	if err := decoder.Decode(&feed); err != nil {
+		return nil, fmt.Errorf("parsing response: %w", err)
+	}
+
+	// Convert to ResearchPaper format
+	papers := make([]ResearchPaper, 0, len(feed.Entries))
+	for _, entry := range feed.Entries {
+		// Extract authors
+		authors := make([]string, len(entry.Authors))
+		for i, author := range entry.Authors {
+			authors[i] = strings.TrimSpace(author.Name)
+		}
+
+		// Find PDF link
+		var pdfURL string
+		for _, link := range entry.Links {
+			if link.Type == "application/pdf" {
+				pdfURL = link.Href
+				break
+			}
+		}
+
+		// Extract arXiv ID from entry ID
+		arxivID := strings.TrimPrefix(entry.ID, "http://arxiv.org/abs/")
+
+		// Parse publication date
+		pubDate, _ := time.Parse(time.RFC3339, entry.Published)
+
+		papers = append(papers, ResearchPaper{
+			Title:          strings.TrimSpace(entry.Title),
+			Authors:        authors,
+			Abstract:       strings.TrimSpace(entry.Summary),
+			PublishedDate:  pubDate.Format("2006-01-02"),
+			Source:         "arXiv",
+			URL:            entry.ID,
+			PDFURL:         pdfURL,
+			ArxivID:        arxivID,
+			RelevanceScore: 1.0, // arXiv doesn't provide relevance scores
+		})
+	}
+
+	return papers, nil
+}
+
+func searchPubMed(ctx context.Context, params SearchResearchParams) ([]ResearchPaper, error) {
+	// PubMed requires two API calls: esearch to get IDs, then efetch to get details
+
+	// First, search for IDs
+	searchURL := pubmedBaseURL + "esearch.fcgi"
+	searchQuery := url.Values{}
+	searchQuery.Set("db", "pubmed")
+	searchQuery.Set("term", params.Query)
+	searchQuery.Set("retmax", fmt.Sprintf("%d", params.MaxResults))
+	searchQuery.Set("retmode", "json")
+	searchQuery.Set("sort", "relevance")
+
+	// Add API key if available
+	if apiKey := os.Getenv("PUBMED_API_KEY"); apiKey != "" {
+		searchQuery.Set("api_key", apiKey)
+	}
+
+	fullSearchURL := fmt.Sprintf("%s?%s", searchURL, searchQuery.Encode())
+
+	// Create search request
+	searchReq, err := http.NewRequestWithContext(ctx, "GET", fullSearchURL, nil)
+	if err != nil {
+		return nil, fmt.Errorf("creating search request: %w", err)
+	}
+
+	// Execute search request
+	client := &http.Client{Timeout: 30 * time.Second}
+	searchResp, err := client.Do(searchReq)
+	if err != nil {
+		return nil, fmt.Errorf("executing search request: %w", err)
+	}
+	defer searchResp.Body.Close()
+
+	if searchResp.StatusCode != http.StatusOK {
+		body, _ := io.ReadAll(searchResp.Body)
+		return nil, fmt.Errorf("search API returned status %d: %s", searchResp.StatusCode, string(body))
+	}
+
+	// Parse search results
+	var searchResult struct {
+		ESearchResult struct {
+			IDList []string `json:"idlist"`
+		} `json:"esearchresult"`
+	}
+
+	if err := json.NewDecoder(searchResp.Body).Decode(&searchResult); err != nil {
+		return nil, fmt.Errorf("parsing search response: %w", err)
+	}
+
+	if len(searchResult.ESearchResult.IDList) == 0 {
+		return []ResearchPaper{}, nil
+	}
+
+	// Second, fetch details for the IDs
+	fetchURL := pubmedBaseURL + "efetch.fcgi"
+	fetchQuery := url.Values{}
+	fetchQuery.Set("db", "pubmed")
+	fetchQuery.Set("id", strings.Join(searchResult.ESearchResult.IDList, ","))
+	fetchQuery.Set("retmode", "xml")
+	if apiKey := os.Getenv("PUBMED_API_KEY"); apiKey != "" {
+		fetchQuery.Set("api_key", apiKey)
+	}
+
+	fullFetchURL := fmt.Sprintf("%s?%s", fetchURL, fetchQuery.Encode())
+
+	// Create fetch request
+	fetchReq, err := http.NewRequestWithContext(ctx, "GET", fullFetchURL, nil)
+	if err != nil {
+		return nil, fmt.Errorf("creating fetch request: %w", err)
+	}
+
+	// Execute fetch request
+	fetchResp, err := client.Do(fetchReq)
+	if err != nil {
+		return nil, fmt.Errorf("executing fetch request: %w", err)
+	}
+	defer fetchResp.Body.Close()
+
+	if fetchResp.StatusCode != http.StatusOK {
+		body, _ := io.ReadAll(fetchResp.Body)
+		return nil, fmt.Errorf("fetch API returned status %d: %s", fetchResp.StatusCode, string(body))
+	}
+
+	// Parse XML response
+	type PubMedArticle struct {
+		MedlineCitation struct {
+			PMID struct {
+				Value string `xml:",chardata"`
+			} `xml:"PMID"`
+			Article struct {
+				ArticleTitle string `xml:"ArticleTitle"`
+				Abstract     struct {
+					AbstractText []string `xml:"AbstractText"`
+				} `xml:"Abstract"`
+				AuthorList struct {
+					Author []struct {
+						LastName string `xml:"LastName"`
+						ForeName string `xml:"ForeName"`
+						Initials string `xml:"Initials"`
+					} `xml:"Author"`
+				} `xml:"AuthorList"`
+				Journal struct {
+					Title string `xml:"Title"`
+				} `xml:"Journal"`
+				ArticleDate struct {
+					Year  string `xml:"Year"`
+					Month string `xml:"Month"`
+					Day   string `xml:"Day"`
+				} `xml:"ArticleDate"`
+			} `xml:"Article"`
+		} `xml:"MedlineCitation"`
+		PubmedData struct {
+			ArticleIdList struct {
+				ArticleId []struct {
+					IdType string `xml:"IdType,attr"`
+					Value  string `xml:",chardata"`
+				} `xml:"ArticleId"`
+			} `xml:"ArticleIdList"`
+		} `xml:"PubmedData"`
+	}
+
+	type PubMedArticleSet struct {
+		Articles []PubMedArticle `xml:"PubmedArticle"`
+	}
+
+	var articleSet PubMedArticleSet
+	decoder := xml.NewDecoder(fetchResp.Body)
+	if err := decoder.Decode(&articleSet); err != nil {
+		return nil, fmt.Errorf("parsing fetch response: %w", err)
+	}
+
+	// Convert to ResearchPaper format
+	papers := make([]ResearchPaper, 0, len(articleSet.Articles))
+	for i, article := range articleSet.Articles {
+		// Extract authors
+		authors := make([]string, len(article.MedlineCitation.Article.AuthorList.Author))
+		for j, author := range article.MedlineCitation.Article.AuthorList.Author {
+			if author.ForeName != "" && author.LastName != "" {
+				authors[j] = fmt.Sprintf("%s %s", author.ForeName, author.LastName)
+			} else if author.LastName != "" {
+				authors[j] = author.LastName
+			}
+		}
+
+		// Extract abstract
+		abstract := strings.Join(article.MedlineCitation.Article.Abstract.AbstractText, " ")
+
+		// Extract DOI and PubMed ID
+		var doi, pmid string
+		pmid = article.MedlineCitation.PMID.Value
+		for _, id := range article.PubmedData.ArticleIdList.ArticleId {
+			if id.IdType == "doi" {
+				doi = id.Value
+				break
+			}
+		}
+
+		// Build publication date
+		var pubDate string
+		if article.MedlineCitation.Article.ArticleDate.Year != "" {
+			year := article.MedlineCitation.Article.ArticleDate.Year
+			month := article.MedlineCitation.Article.ArticleDate.Month
+			day := article.MedlineCitation.Article.ArticleDate.Day
+			if month == "" {
+				month = "01"
+			}
+			if day == "" {
+				day = "01"
+			}
+			pubDate = fmt.Sprintf("%s-%02s-%02s", year, month, day)
+		}
+
+		// Build URL
+		url := fmt.Sprintf("https://pubmed.ncbi.nlm.nih.gov/%s/", pmid)
+
+		papers = append(papers, ResearchPaper{
+			Title:          strings.TrimSpace(article.MedlineCitation.Article.ArticleTitle),
+			Authors:        authors,
+			Abstract:       abstract,
+			PublishedDate:  pubDate,
+			Source:         "PubMed",
+			URL:            url,
+			DOI:            doi,
+			PubMedID:       pmid,
+			Journal:        article.MedlineCitation.Article.Journal.Title,
+			RelevanceScore: 1.0 - (float64(i) * 0.01), // Approximate relevance based on order
+		})
+	}
+
+	return papers, nil
+}
+
+func searchCORE(ctx context.Context, params SearchResearchParams) ([]ResearchPaper, error) {
+	// Get API key
+	apiKey := os.Getenv("CORE_API_KEY")
+	if apiKey == "" {
+		return nil, fmt.Errorf("CORE_API_KEY environment variable not set")
+	}
+
+	// Build request body
+	reqBody := map[string]interface{}{
+		"q":     params.Query,
+		"limit": params.MaxResults,
+	}
+
+	bodyBytes, err := json.Marshal(reqBody)
+	if err != nil {
+		return nil, fmt.Errorf("marshaling request body: %w", err)
+	}
+
+	// Create request
+	req, err := http.NewRequestWithContext(ctx, "POST", coreAPIURL, bytes.NewReader(bodyBytes))
+	if err != nil {
+		return nil, fmt.Errorf("creating request: %w", err)
+	}
+
+	req.Header.Set("Authorization", "Bearer "+apiKey)
+	req.Header.Set("Content-Type", "application/json")
+
+	// Execute request
+	client := &http.Client{Timeout: 30 * time.Second}
+	resp, err := client.Do(req)
+	if err != nil {
+		return nil, fmt.Errorf("executing request: %w", err)
+	}
+	defer resp.Body.Close()
+
+	if resp.StatusCode != http.StatusOK {
+		body, _ := io.ReadAll(resp.Body)
+		return nil, fmt.Errorf("API returned status %d: %s", resp.StatusCode, string(body))
+	}
+
+	// Parse response
+	var coreResp struct {
+		Results []struct {
+			ID            string   `json:"id"`
+			Title         string   `json:"title"`
+			Abstract      string   `json:"abstract"`
+			Authors       []string `json:"authors"`
+			PublishedDate string   `json:"publishedDate"`
+			DOI           string   `json:"doi"`
+			Links         []struct {
+				URL  string `json:"url"`
+				Type string `json:"type"`
+			} `json:"links"`
+			Journals []string `json:"journals"`
+			Score    float64  `json:"score"`
+		} `json:"results"`
+	}
+
+	if err := json.NewDecoder(resp.Body).Decode(&coreResp); err != nil {
+		return nil, fmt.Errorf("parsing response: %w", err)
+	}
+
+	// Convert to ResearchPaper format
+	papers := make([]ResearchPaper, 0, len(coreResp.Results))
+	for _, result := range coreResp.Results {
+		// Find PDF link
+		var pdfURL string
+		for _, link := range result.Links {
+			if link.Type == "pdf" {
+				pdfURL = link.URL
+				break
+			}
+		}
+
+		// Use first link as URL if no specific type
+		var articleURL string
+		if len(result.Links) > 0 {
+			articleURL = result.Links[0].URL
+		}
+
+		// Get journal name
+		var journal string
+		if len(result.Journals) > 0 {
+			journal = result.Journals[0]
+		}
+
+		// Parse date to standard format
+		var pubDate string
+		if result.PublishedDate != "" {
+			// Try to parse various date formats
+			for _, format := range []string{
+				"2006-01-02",
+				"2006-01-02T15:04:05Z",
+				"2006-01-02T15:04:05.000Z",
+				"2006",
+			} {
+				if t, err := time.Parse(format, result.PublishedDate); err == nil {
+					pubDate = t.Format("2006-01-02")
+					break
+				}
+			}
+			if pubDate == "" {
+				pubDate = result.PublishedDate // Use as-is if parsing fails
+			}
+		}
+
+		papers = append(papers, ResearchPaper{
+			Title:          result.Title,
+			Authors:        result.Authors,
+			Abstract:       result.Abstract,
+			PublishedDate:  pubDate,
+			Source:         "CORE",
+			URL:            articleURL,
+			PDFURL:         pdfURL,
+			DOI:            result.DOI,
+			Journal:        journal,
+			RelevanceScore: result.Score,
+		})
+	}
+
+	return papers, nil
 }

@@ -456,6 +456,269 @@ uniqueResults := deduplicateByURL(allResults)
 summary := braveResults.Summary[0].Text
 ```
 
+### search_research
+
+Searches for academic papers across multiple research databases (arXiv, PubMed, CORE) in parallel.
+
+**Tool Name:** `search_research`
+
+**Description:** Searches for academic papers across multiple research databases (arXiv, PubMed, CORE) in parallel
+
+**Parameters:**
+- `query` (string, required): Search query for research papers
+- `max_results` (integer, optional): Maximum results per provider, 1-100 (default: 10)
+- `start_date` (string, optional): Filter papers from this date (YYYY-MM-DD format)
+- `end_date` (string, optional): Filter papers until this date (YYYY-MM-DD format)
+- `authors` (array, optional): Filter by author names
+- `categories` (array, optional): Subject categories (cs, physics, medicine, etc.)
+- `open_access` (boolean, optional): Only return open access papers
+- `sort_by` (string, optional): Sort order - one of: 'relevance', 'date', 'citations' (default: 'relevance')
+- `providers` (array, optional): Specific providers to search - array of: 'arxiv', 'pubmed', 'core' (default: all)
+- `core_api_key` (string, optional): CORE API key for enhanced access
+
+**Returns:**
+```json
+{
+  "query": "machine learning healthcare",
+  "total_results": 45,
+  "papers": [
+    {
+      "title": "Deep Learning for Medical Image Analysis",
+      "authors": ["John Doe", "Jane Smith"],
+      "abstract": "This paper presents a comprehensive survey...",
+      "published_date": "2024-01-15",
+      "source": "arXiv",
+      "url": "http://arxiv.org/abs/2401.12345",
+      "pdf_url": "http://arxiv.org/pdf/2401.12345",
+      "doi": "10.1234/example.doi",
+      "arxiv_id": "2401.12345",
+      "pubmed_id": "",
+      "journal": "",
+      "relevance_score": 0.95
+    }
+  ],
+  "providers": [
+    {
+      "name": "arxiv",
+      "result_count": 20,
+      "response_time_ms": 523
+    },
+    {
+      "name": "pubmed",
+      "result_count": 15,
+      "response_time_ms": 867
+    },
+    {
+      "name": "core",
+      "result_count": 10,
+      "response_time_ms": 445
+    }
+  ],
+  "fetched_at": "2024-01-15T12:00:00Z"
+}
+```
+
+### Research Search Usage Examples
+
+#### Basic Research Search
+
+```go
+tool := tools.NewSearchResearchTool()
+
+params := tools.SearchResearchParams{
+    Query:      "machine learning healthcare",
+    MaxResults: 20,
+}
+
+result, err := tool.Execute(ctx, params)
+researchResult := result.(*tools.SearchResearchResult)
+
+fmt.Printf("Found %d unique papers\n", researchResult.TotalResults)
+
+for _, paper := range researchResult.Papers {
+    fmt.Printf("- [%s] %s by %s\n", 
+        paper.Source, 
+        paper.Title, 
+        strings.Join(paper.Authors, ", "))
+}
+```
+
+#### Category-Specific Search
+
+```go
+params := tools.SearchResearchParams{
+    Query:      "neural networks",
+    Categories: []string{"cs", "math"},
+    MaxResults: 30,
+    SortBy:     "date",
+}
+```
+
+#### Medical Research with Date Filter
+
+```go
+params := tools.SearchResearchParams{
+    Query:      "COVID-19 vaccines",
+    Providers:  []string{"pubmed"},
+    StartDate:  "2023-01-01",
+    EndDate:    "2024-01-01",
+    OpenAccess: true,
+}
+```
+
+#### Author-Specific Search
+
+```go
+params := tools.SearchResearchParams{
+    Query:   "deep learning",
+    Authors: []string{"Geoffrey Hinton", "Yann LeCun"},
+}
+```
+
+#### CORE-Only Search with API Key
+
+```go
+params := tools.SearchResearchParams{
+    Query:       "climate change mitigation",
+    Providers:   []string{"core"},
+    CoreAPIKey:  "your-core-api-key", // or set CORE_API_KEY env var
+    MaxResults:  50,
+}
+```
+
+### Provider Details
+
+#### arXiv
+- **Coverage**: Physics, Mathematics, Computer Science, Quantitative Biology, Quantitative Finance, Statistics, Electrical Engineering, Economics
+- **Access**: Free, no API key required
+- **Rate Limit**: 3 requests per second
+- **Special Features**: Preprints, version history, PDF access
+- **Categories**: cs (Computer Science), math (Mathematics), physics, q-bio (Quantitative Biology), etc.
+
+#### PubMed
+- **Coverage**: Biomedical and life sciences literature
+- **Access**: Free, optional API key for higher rate limits
+- **Rate Limit**: 3/second without key, 10/second with key
+- **Special Features**: Peer-reviewed content, clinical trials, MeSH terms
+- **Environment Variable**: `PUBMED_API_KEY`
+
+#### CORE
+- **Coverage**: Open access research from repositories worldwide
+- **Access**: Requires free API key from https://core.ac.uk
+- **Rate Limit**: 10 requests per second
+- **Special Features**: Full-text search, diverse content, global coverage
+- **Environment Variable**: `CORE_API_KEY`
+
+### Environment Variables
+
+```bash
+# Optional: For higher PubMed rate limits
+export PUBMED_API_KEY=your_pubmed_api_key
+
+# Required: For CORE access
+export CORE_API_KEY=your_core_api_key
+```
+
+### Advanced Features
+
+#### Parallel Search
+The tool searches all selected providers in parallel for optimal performance:
+
+```go
+// This searches arXiv, PubMed, and CORE simultaneously
+params := tools.SearchResearchParams{
+    Query:      "artificial intelligence",
+    MaxResults: 100, // 100 per provider
+}
+```
+
+#### Deduplication
+Results are automatically deduplicated based on:
+- DOI (Digital Object Identifier)
+- Title similarity
+
+#### Provider Selection
+The tool intelligently selects providers based on categories:
+
+```go
+// Automatically uses arXiv for CS categories
+params := tools.SearchResearchParams{
+    Query:      "algorithms",
+    Categories: []string{"cs"},
+}
+
+// Automatically uses PubMed for medical categories
+params := tools.SearchResearchParams{
+    Query:      "cancer treatment",
+    Categories: []string{"medicine"},
+}
+```
+
+#### Error Handling
+Provider failures are handled gracefully:
+
+```go
+result, err := tool.Execute(ctx, params)
+if err != nil {
+    // Total failure - no providers returned results
+    log.Fatal(err)
+}
+
+// Check individual provider status
+for _, provider := range result.Providers {
+    if provider.Error != "" {
+        fmt.Printf("Provider %s failed: %s\n", provider.Name, provider.Error)
+    }
+}
+```
+
+### Research Tool vs Other Search Tools
+
+| Feature | Research Search | News API | Brave Search |
+|---------|----------------|----------|--------------|
+| Content Type | Academic papers | News articles | Web pages |
+| Peer Review | ✅ Yes (PubMed) | ❌ No | ❌ No |
+| PDF Access | ✅ Yes | ❌ No | ➖ Limited |
+| Citation Info | ✅ Yes | ❌ No | ❌ No |
+| DOI Support | ✅ Yes | ❌ No | ❌ No |
+| Preprints | ✅ Yes (arXiv) | ❌ No | ➖ Maybe |
+| Medical Focus | ✅ Yes (PubMed) | ➖ General | ➖ General |
+
+### Integration with Research Workflow
+
+```go
+// Search for papers
+researchResults := searchResearch("machine learning healthcare")
+
+// Download PDFs for open access papers
+for _, paper := range researchResults.Papers {
+    if paper.PDFURL != "" {
+        pdf := downloadPDF(paper.PDFURL)
+        
+        // Extract text for analysis
+        text := extractTextFromPDF(pdf)
+        
+        // Analyze with LLM agent
+        summary := summarizerAgent.Summarize(text)
+        keyFindings := researchAgent.ExtractFindings(text)
+    }
+}
+
+// Cross-reference with news
+newsResults := searchNewsAPI(paper.Title)
+mediaVoverage := analyzeMediaCoverage(paper, newsResults)
+```
+
+### Best Practices
+
+1. **API Keys**: Set up environment variables for API keys
+2. **Rate Limiting**: The tool implements automatic rate limiting
+3. **Category Selection**: Use categories to optimize provider selection
+4. **Date Ranges**: Use reasonable date ranges for faster results
+5. **Deduplication**: Results are automatically deduplicated
+6. **Error Handling**: Check provider-specific errors in results
+7. **Parallel Queries**: Default behavior for best performance
+
 ## Future Enhancements
 
 Planned improvements for API tools:

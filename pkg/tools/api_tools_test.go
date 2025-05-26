@@ -765,3 +765,32 @@ func TestSearchWebBraveHandler_Pagination(t *testing.T) {
 		t.Errorf("Expected query 'test', got '%s'", result.Query)
 	}
 }
+
+// Research Search API Tests
+
+func TestNewSearchResearchTool(t *testing.T) {
+	tool := NewSearchResearchTool()
+
+	if tool.Name() != "search_research" {
+		t.Errorf("Expected tool name 'search_research', got '%s'", tool.Name())
+	}
+
+	expectedDesc := "Searches for academic papers across multiple research databases (arXiv, PubMed, CORE) in parallel"
+	if tool.Description() != expectedDesc {
+		t.Errorf("Unexpected tool description: %s", tool.Description())
+	}
+}
+
+// Research search tests are in api_tools_research_test.go
+
+func TestResearchToolRegistration(t *testing.T) {
+	tool := NewSearchResearchTool()
+
+	if tool.Name() != "search_research" {
+		t.Errorf("Expected tool name 'search_research', got '%s'", tool.Name())
+	}
+
+	if tool.Description() == "" {
+		t.Error("Expected non-empty tool description")
+	}
+}
