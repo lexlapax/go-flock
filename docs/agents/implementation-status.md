@@ -3,17 +3,21 @@
 ## Completed Agents
 
 ### research_papers (✓ Complete)
-- **Status**: Fully implemented with tests, CLI, and documentation
+- **Status**: Fully implemented with tests, CLI, documentation, and debug support
 - **Files**: 
   - Implementation: `pkg/agents/research_papers.go`
   - Tests: `pkg/agents/research_papers_test.go` (100% coverage)
   - CLI: `examples/agents/research_papers/main.go`
   - Documentation: `docs/agents/research_papers.md`
+  - Developer Guide: `docs/developer/creating-agents.md`
 - **Features**:
   - Configurable output formats (Markdown, JSON, Text)
   - Multiple LLM provider support
   - Integrated with ResearchPaperAPI, FetchWebPage, and ExtractMetadata tools
   - Full TDD implementation
+  - Debug logging with slog integration
+  - Gemini compatibility with proper tool call formatting
+  - Comprehensive error handling and troubleshooting guide
 
 ## Infrastructure (✓ Complete)
 - **Base Types**: `pkg/agents/types.go`

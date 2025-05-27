@@ -4,6 +4,8 @@
 
 The Research Papers Agent specializes in finding and analyzing academic papers from multiple research databases. It uses the ResearchPaperAPI tool to query arXiv, PubMed, and CORE databases simultaneously, providing comprehensive research findings.
 
+> **Developer Note**: For a detailed walkthrough of how this agent was created, including architecture decisions, debugging challenges, and best practices, see the [Creating Custom Agents](../developer/creating-agents.md) guide.
+
 ## Features
 
 - **Multi-source Search**: Queries arXiv, PubMed, and CORE databases
@@ -214,26 +216,78 @@ http.HandleFunc("/research", func(w http.ResponseWriter, r *http.Request) {
 
 ## Prompt Architecture
 
-The Research Papers Agent uses a modular prompt structure for maintainability:
+The Research Papers Agent uses a modular prompt structure that separates core functionality from format-specific instructions, avoiding duplication and improving maintainability.
+
+### Architecture Overview
+
+```go
+// Core prompt - shared across all formats
+const coreResearchPapersPrompt = `...agent role, tools, and approach...`
+
+// Format-specific instructions
+const formatInstructionsMarkdown = `...markdown formatting rules...`
+const formatInstructionsJSON = `...JSON schema and rules...`
+const formatInstructionsText = `...plain text formatting rules...`
+
+// Combine them dynamically
+func getResearchPapersPrompt(format OutputFormat) string {
+    formatInstructions := getFormatInstructions(format)
+    return coreResearchPapersPrompt + "\n\n" + formatInstructions
+}
+```
 
 ### Core Prompt
 The core prompt (shared across all formats) defines:
 - Agent role and expertise
-- Available tools and their purposes
+- Available tools and their purposes  
+- Step-by-step instructions for tool usage
+- Critical instructions for handling tool calls
 - General analysis approach
 - Quality standards for research
 
 ### Format-Specific Instructions
 Each output format has specific formatting instructions that are appended to the core prompt:
-- **Markdown**: Section structure, formatting guidelines
-- **JSON**: Schema definition, field requirements
-- **Text**: Plain text formatting rules
+- **Markdown**: Section structure, headers, lists, formatting guidelines
+- **JSON**: Schema definition, field requirements, valid JSON syntax
+- **Text**: Plain text formatting rules, capitalization, structure
 
-This separation allows you to:
-- Modify the core behavior without changing format instructions
-- Add new output formats easily
-- Maintain consistency across formats
-- Test prompts independently
+### Benefits of Modular Architecture
+
+1. **Single Source of Truth**: Core agent behavior defined once
+2. **Easy Maintenance**: Update agent capabilities without touching format instructions
+3. **Consistency**: All formats share the same core behavior
+4. **Extensibility**: Add new output formats by creating new format instructions
+5. **Clear Separation**: Tool usage and agent role separate from formatting
+6. **Easier Testing**: Test core logic and format compliance independently
+
+### Modifying Agent Behavior
+
+To change how the agent analyzes papers, edit only `coreResearchPapersPrompt`:
+```go
+const coreResearchPapersPrompt = `You are a research specialist...
+// Add new instruction here - applies to all formats
+- Prioritize papers from the last 5 years
+- Focus on open-access papers when available
+...`
+```
+
+### Adding a New Output Format
+
+To add a new format (e.g., LaTeX):
+```go
+// 1. Define format instructions
+const formatInstructionsLatex = `Provide your findings as a LaTeX document:
+\documentclass{article}
+\begin{document}
+...`
+
+// 2. Add to OutputFormat enum
+OutputFormatLatex OutputFormat = "latex"
+
+// 3. Add case to getResearchPapersPrompt
+case OutputFormatLatex:
+    formatInstructions = formatInstructionsLatex
+```
 
 ## Best Practices
 
@@ -251,19 +305,48 @@ This separation allows you to:
 - Results depend on database coverage
 - May not include very recent papers (database lag)
 
+## Debugging
+
+The Research Papers Agent includes comprehensive debug logging support:
+
+```bash
+# Enable debug logging via CLI flag
+go run main.go -query "quantum computing" -debug
+
+# Or via environment variable
+FLOCK_DEBUG=true go run main.go -query "quantum computing"
+```
+
+Debug logging provides:
+- Tool execution details
+- LLM communication logs  
+- Agent workflow steps
+- Parameter validation
+- Error diagnostics
+
 ## Troubleshooting
 
 ### No Results Found
 - Check if BRAVE_API_KEY is set
 - Verify internet connectivity
 - Try broader search terms
+- Enable debug logging to see API calls
+
+### Tool Call Issues (Gemini)
+If using Gemini and seeing raw JSON tool calls:
+- The agent includes special instructions for Gemini compatibility
+- Ensure you're using the latest version of the agent
+- Tool arguments must be formatted as JSON strings
+- See [Troubleshooting Guide](../troubleshooting.md) for details
 
 ### API Errors
 - Check API key validity
 - Monitor rate limits
 - Verify provider configuration
+- Review debug logs for specific error messages
 
 ### Parsing Errors
 - Ensure consistent output format
 - Check for LLM model compatibility
 - Review agent logs for details
+- Verify tool responses are properly formatted
