@@ -56,7 +56,7 @@ cd datetime
 go run main.go
 
 # Some examples require API keys
-export BRAVE_API_KEY=your_key
+export BRAVE_SEARCH_API_KEY=your_key
 cd brave_search
 go run main.go
 ```
@@ -64,7 +64,7 @@ go run main.go
 ## Environment Variables
 
 Some tools require API keys:
-- `BRAVE_API_KEY` - For Brave Search
+- `BRAVE_SEARCH_API_KEY` - For Brave Search
 - `NEWS_API_KEY` - For NewsAPI.org
 - `OPENAI_API_KEY` / `ANTHROPIC_API_KEY` / `GEMINI_API_KEY` - For LLM providers
 

@@ -69,7 +69,7 @@ Some LLM providers (like Gemini) don't have native tool/function calling support
 1. **Set Environment Variables**
    ```bash
    export NEWS_API_KEY=your_newsapi_key
-   export BRAVE_API_KEY=your_brave_api_key
+   export BRAVE_SEARCH_API_KEY=your_brave_api_key
    export CORE_API_KEY=your_core_api_key
    ```
 

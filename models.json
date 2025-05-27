@@ -1,0 +1,5209 @@
+[
+  {
+    "provider": "openai",
+    "name": "gpt-4o-realtime-preview-2024-12-17",
+    "display_name": "gpt-4o-realtime-preview-2024-12-17",
+    "description": "Model data fetched from OpenAI API.",
+    "documentation_url": "https://platform.openai.com/docs/models/gpt-4o-realtime-preview-2024-12-17",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": true
+      },
+      "image": {
+        "read": true,
+        "write": false
+      },
+      "audio": {
+        "read": false,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": true,
+      "streaming": true,
+      "json_mode": false
+    },
+    "context_window": 0,
+    "max_output_tokens": 0,
+    "training_cutoff": "",
+    "model_family": "gpt",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "openai",
+    "name": "gpt-4o-audio-preview-2024-12-17",
+    "display_name": "gpt-4o-audio-preview-2024-12-17",
+    "description": "Model data fetched from OpenAI API.",
+    "documentation_url": "https://platform.openai.com/docs/models/gpt-4o-audio-preview-2024-12-17",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": true
+      },
+      "image": {
+        "read": true,
+        "write": false
+      },
+      "audio": {
+        "read": false,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": true,
+      "streaming": true,
+      "json_mode": false
+    },
+    "context_window": 0,
+    "max_output_tokens": 0,
+    "training_cutoff": "",
+    "model_family": "gpt",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "openai",
+    "name": "gpt-4-1106-preview",
+    "display_name": "gpt-4-1106-preview",
+    "description": "Model data fetched from OpenAI API.",
+    "documentation_url": "https://platform.openai.com/docs/models/gpt-4-1106-preview",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": true
+      },
+      "image": {
+        "read": false,
+        "write": false
+      },
+      "audio": {
+        "read": false,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": true,
+      "streaming": true,
+      "json_mode": false
+    },
+    "context_window": 0,
+    "max_output_tokens": 0,
+    "training_cutoff": "",
+    "model_family": "gpt",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "openai",
+    "name": "dall-e-3",
+    "display_name": "dall-e-3",
+    "description": "Model data fetched from OpenAI API.",
+    "documentation_url": "https://platform.openai.com/docs/models/dall-e-3",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": false
+      },
+      "image": {
+        "read": false,
+        "write": true
+      },
+      "audio": {
+        "read": false,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": false,
+      "streaming": true,
+      "json_mode": false
+    },
+    "context_window": 0,
+    "max_output_tokens": 0,
+    "training_cutoff": "",
+    "model_family": "dall-e",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "openai",
+    "name": "dall-e-2",
+    "display_name": "dall-e-2",
+    "description": "Model data fetched from OpenAI API.",
+    "documentation_url": "https://platform.openai.com/docs/models/dall-e-2",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": false
+      },
+      "image": {
+        "read": false,
+        "write": true
+      },
+      "audio": {
+        "read": false,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": false,
+      "streaming": true,
+      "json_mode": false
+    },
+    "context_window": 0,
+    "max_output_tokens": 0,
+    "training_cutoff": "",
+    "model_family": "dall-e",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "openai",
+    "name": "gpt-4o-audio-preview-2024-10-01",
+    "display_name": "gpt-4o-audio-preview-2024-10-01",
+    "description": "Model data fetched from OpenAI API.",
+    "documentation_url": "https://platform.openai.com/docs/models/gpt-4o-audio-preview-2024-10-01",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": true
+      },
+      "image": {
+        "read": true,
+        "write": false
+      },
+      "audio": {
+        "read": false,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": true,
+      "streaming": true,
+      "json_mode": false
+    },
+    "context_window": 0,
+    "max_output_tokens": 0,
+    "training_cutoff": "",
+    "model_family": "gpt",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "openai",
+    "name": "gpt-4-turbo-preview",
+    "display_name": "gpt-4-turbo-preview",
+    "description": "Model data fetched from OpenAI API.",
+    "documentation_url": "https://platform.openai.com/docs/models/gpt-4-turbo-preview",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": true
+      },
+      "image": {
+        "read": false,
+        "write": false
+      },
+      "audio": {
+        "read": false,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": true,
+      "streaming": true,
+      "json_mode": false
+    },
+    "context_window": 0,
+    "max_output_tokens": 0,
+    "training_cutoff": "",
+    "model_family": "gpt",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "openai",
+    "name": "text-embedding-3-small",
+    "display_name": "text-embedding-3-small",
+    "description": "Model data fetched from OpenAI API.",
+    "documentation_url": "https://platform.openai.com/docs/models/text-embedding-3-small",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": true
+      },
+      "image": {
+        "read": false,
+        "write": false
+      },
+      "audio": {
+        "read": false,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": false,
+      "streaming": true,
+      "json_mode": false
+    },
+    "context_window": 0,
+    "max_output_tokens": 0,
+    "training_cutoff": "",
+    "model_family": "text-embedding",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "openai",
+    "name": "babbage-002",
+    "display_name": "babbage-002",
+    "description": "Model data fetched from OpenAI API.",
+    "documentation_url": "https://platform.openai.com/docs/models/babbage-002",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": true
+      },
+      "image": {
+        "read": false,
+        "write": false
+      },
+      "audio": {
+        "read": false,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": false,
+      "streaming": true,
+      "json_mode": false
+    },
+    "context_window": 0,
+    "max_output_tokens": 0,
+    "training_cutoff": "",
+    "model_family": "babbage",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "openai",
+    "name": "gpt-4",
+    "display_name": "gpt-4",
+    "description": "Model data fetched from OpenAI API.",
+    "documentation_url": "https://platform.openai.com/docs/models/gpt-4",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": true
+      },
+      "image": {
+        "read": false,
+        "write": false
+      },
+      "audio": {
+        "read": false,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": true,
+      "streaming": true,
+      "json_mode": false
+    },
+    "context_window": 0,
+    "max_output_tokens": 0,
+    "training_cutoff": "",
+    "model_family": "gpt",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "openai",
+    "name": "text-embedding-ada-002",
+    "display_name": "text-embedding-ada-002",
+    "description": "Model data fetched from OpenAI API.",
+    "documentation_url": "https://platform.openai.com/docs/models/text-embedding-ada-002",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": true
+      },
+      "image": {
+        "read": false,
+        "write": false
+      },
+      "audio": {
+        "read": false,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": false,
+      "streaming": true,
+      "json_mode": false
+    },
+    "context_window": 0,
+    "max_output_tokens": 0,
+    "training_cutoff": "",
+    "model_family": "text-embedding",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "openai",
+    "name": "chatgpt-4o-latest",
+    "display_name": "chatgpt-4o-latest",
+    "description": "Model data fetched from OpenAI API.",
+    "documentation_url": "https://platform.openai.com/docs/models/chatgpt-4o-latest",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": true
+      },
+      "image": {
+        "read": false,
+        "write": false
+      },
+      "audio": {
+        "read": false,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": false,
+      "streaming": true,
+      "json_mode": false
+    },
+    "context_window": 0,
+    "max_output_tokens": 0,
+    "training_cutoff": "",
+    "model_family": "chatgpt",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "openai",
+    "name": "gpt-4o-mini-audio-preview",
+    "display_name": "gpt-4o-mini-audio-preview",
+    "description": "Model data fetched from OpenAI API.",
+    "documentation_url": "https://platform.openai.com/docs/models/gpt-4o-mini-audio-preview",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": true
+      },
+      "image": {
+        "read": true,
+        "write": false
+      },
+      "audio": {
+        "read": false,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": true,
+      "streaming": true,
+      "json_mode": false
+    },
+    "context_window": 0,
+    "max_output_tokens": 0,
+    "training_cutoff": "",
+    "model_family": "gpt",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "openai",
+    "name": "gpt-4o-audio-preview",
+    "display_name": "gpt-4o-audio-preview",
+    "description": "Model data fetched from OpenAI API.",
+    "documentation_url": "https://platform.openai.com/docs/models/gpt-4o-audio-preview",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": true
+      },
+      "image": {
+        "read": true,
+        "write": false
+      },
+      "audio": {
+        "read": false,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": true,
+      "streaming": true,
+      "json_mode": false
+    },
+    "context_window": 0,
+    "max_output_tokens": 0,
+    "training_cutoff": "",
+    "model_family": "gpt",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "openai",
+    "name": "gpt-4o-mini-realtime-preview",
+    "display_name": "gpt-4o-mini-realtime-preview",
+    "description": "Model data fetched from OpenAI API.",
+    "documentation_url": "https://platform.openai.com/docs/models/gpt-4o-mini-realtime-preview",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": true
+      },
+      "image": {
+        "read": true,
+        "write": false
+      },
+      "audio": {
+        "read": false,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": true,
+      "streaming": true,
+      "json_mode": false
+    },
+    "context_window": 0,
+    "max_output_tokens": 0,
+    "training_cutoff": "",
+    "model_family": "gpt",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "openai",
+    "name": "gpt-4o-mini-realtime-preview-2024-12-17",
+    "display_name": "gpt-4o-mini-realtime-preview-2024-12-17",
+    "description": "Model data fetched from OpenAI API.",
+    "documentation_url": "https://platform.openai.com/docs/models/gpt-4o-mini-realtime-preview-2024-12-17",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": true
+      },
+      "image": {
+        "read": true,
+        "write": false
+      },
+      "audio": {
+        "read": false,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": true,
+      "streaming": true,
+      "json_mode": false
+    },
+    "context_window": 0,
+    "max_output_tokens": 0,
+    "training_cutoff": "",
+    "model_family": "gpt",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "openai",
+    "name": "gpt-4.1-nano",
+    "display_name": "gpt-4.1-nano",
+    "description": "Model data fetched from OpenAI API.",
+    "documentation_url": "https://platform.openai.com/docs/models/gpt-4.1-nano",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": true
+      },
+      "image": {
+        "read": false,
+        "write": false
+      },
+      "audio": {
+        "read": false,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": true,
+      "streaming": true,
+      "json_mode": false
+    },
+    "context_window": 0,
+    "max_output_tokens": 0,
+    "training_cutoff": "",
+    "model_family": "gpt",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "openai",
+    "name": "gpt-3.5-turbo-instruct-0914",
+    "display_name": "gpt-3.5-turbo-instruct-0914",
+    "description": "Model data fetched from OpenAI API.",
+    "documentation_url": "https://platform.openai.com/docs/models/gpt-3.5-turbo-instruct-0914",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": true
+      },
+      "image": {
+        "read": false,
+        "write": false
+      },
+      "audio": {
+        "read": false,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": false,
+      "streaming": true,
+      "json_mode": false
+    },
+    "context_window": 0,
+    "max_output_tokens": 0,
+    "training_cutoff": "",
+    "model_family": "gpt",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "openai",
+    "name": "gpt-4o-mini-search-preview",
+    "display_name": "gpt-4o-mini-search-preview",
+    "description": "Model data fetched from OpenAI API.",
+    "documentation_url": "https://platform.openai.com/docs/models/gpt-4o-mini-search-preview",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": true
+      },
+      "image": {
+        "read": true,
+        "write": false
+      },
+      "audio": {
+        "read": false,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": true,
+      "streaming": true,
+      "json_mode": false
+    },
+    "context_window": 0,
+    "max_output_tokens": 0,
+    "training_cutoff": "",
+    "model_family": "gpt",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "openai",
+    "name": "gpt-4.1-nano-2025-04-14",
+    "display_name": "gpt-4.1-nano-2025-04-14",
+    "description": "Model data fetched from OpenAI API.",
+    "documentation_url": "https://platform.openai.com/docs/models/gpt-4.1-nano-2025-04-14",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": true
+      },
+      "image": {
+        "read": false,
+        "write": false
+      },
+      "audio": {
+        "read": false,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": true,
+      "streaming": true,
+      "json_mode": false
+    },
+    "context_window": 0,
+    "max_output_tokens": 0,
+    "training_cutoff": "",
+    "model_family": "gpt",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "openai",
+    "name": "gpt-3.5-turbo-16k",
+    "display_name": "gpt-3.5-turbo-16k",
+    "description": "Model data fetched from OpenAI API.",
+    "documentation_url": "https://platform.openai.com/docs/models/gpt-3.5-turbo-16k",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": true
+      },
+      "image": {
+        "read": false,
+        "write": false
+      },
+      "audio": {
+        "read": false,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": false,
+      "streaming": true,
+      "json_mode": false
+    },
+    "context_window": 0,
+    "max_output_tokens": 0,
+    "training_cutoff": "",
+    "model_family": "gpt",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "openai",
+    "name": "gpt-4o-realtime-preview",
+    "display_name": "gpt-4o-realtime-preview",
+    "description": "Model data fetched from OpenAI API.",
+    "documentation_url": "https://platform.openai.com/docs/models/gpt-4o-realtime-preview",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": true
+      },
+      "image": {
+        "read": true,
+        "write": false
+      },
+      "audio": {
+        "read": false,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": true,
+      "streaming": true,
+      "json_mode": false
+    },
+    "context_window": 0,
+    "max_output_tokens": 0,
+    "training_cutoff": "",
+    "model_family": "gpt",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "openai",
+    "name": "davinci-002",
+    "display_name": "davinci-002",
+    "description": "Model data fetched from OpenAI API.",
+    "documentation_url": "https://platform.openai.com/docs/models/davinci-002",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": true
+      },
+      "image": {
+        "read": false,
+        "write": false
+      },
+      "audio": {
+        "read": false,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": false,
+      "streaming": true,
+      "json_mode": false
+    },
+    "context_window": 0,
+    "max_output_tokens": 0,
+    "training_cutoff": "",
+    "model_family": "davinci",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "openai",
+    "name": "gpt-3.5-turbo-1106",
+    "display_name": "gpt-3.5-turbo-1106",
+    "description": "Model data fetched from OpenAI API.",
+    "documentation_url": "https://platform.openai.com/docs/models/gpt-3.5-turbo-1106",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": true
+      },
+      "image": {
+        "read": false,
+        "write": false
+      },
+      "audio": {
+        "read": false,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": false,
+      "streaming": true,
+      "json_mode": false
+    },
+    "context_window": 0,
+    "max_output_tokens": 0,
+    "training_cutoff": "",
+    "model_family": "gpt",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "openai",
+    "name": "gpt-4o-search-preview",
+    "display_name": "gpt-4o-search-preview",
+    "description": "Model data fetched from OpenAI API.",
+    "documentation_url": "https://platform.openai.com/docs/models/gpt-4o-search-preview",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": true
+      },
+      "image": {
+        "read": true,
+        "write": false
+      },
+      "audio": {
+        "read": false,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": true,
+      "streaming": true,
+      "json_mode": false
+    },
+    "context_window": 0,
+    "max_output_tokens": 0,
+    "training_cutoff": "",
+    "model_family": "gpt",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "openai",
+    "name": "gpt-3.5-turbo-instruct",
+    "display_name": "gpt-3.5-turbo-instruct",
+    "description": "Model data fetched from OpenAI API.",
+    "documentation_url": "https://platform.openai.com/docs/models/gpt-3.5-turbo-instruct",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": true
+      },
+      "image": {
+        "read": false,
+        "write": false
+      },
+      "audio": {
+        "read": false,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": false,
+      "streaming": true,
+      "json_mode": false
+    },
+    "context_window": 0,
+    "max_output_tokens": 0,
+    "training_cutoff": "",
+    "model_family": "gpt",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "openai",
+    "name": "gpt-3.5-turbo",
+    "display_name": "gpt-3.5-turbo",
+    "description": "Model data fetched from OpenAI API.",
+    "documentation_url": "https://platform.openai.com/docs/models/gpt-3.5-turbo",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": true
+      },
+      "image": {
+        "read": false,
+        "write": false
+      },
+      "audio": {
+        "read": false,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": false,
+      "streaming": true,
+      "json_mode": false
+    },
+    "context_window": 0,
+    "max_output_tokens": 0,
+    "training_cutoff": "",
+    "model_family": "gpt",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "openai",
+    "name": "o3-mini-2025-01-31",
+    "display_name": "o3-mini-2025-01-31",
+    "description": "Model data fetched from OpenAI API.",
+    "documentation_url": "https://platform.openai.com/docs/models/o3-mini-2025-01-31",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": true
+      },
+      "image": {
+        "read": false,
+        "write": false
+      },
+      "audio": {
+        "read": false,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": false,
+      "streaming": true,
+      "json_mode": false
+    },
+    "context_window": 0,
+    "max_output_tokens": 0,
+    "training_cutoff": "",
+    "model_family": "o3",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "openai",
+    "name": "gpt-4o-mini-search-preview-2025-03-11",
+    "display_name": "gpt-4o-mini-search-preview-2025-03-11",
+    "description": "Model data fetched from OpenAI API.",
+    "documentation_url": "https://platform.openai.com/docs/models/gpt-4o-mini-search-preview-2025-03-11",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": true
+      },
+      "image": {
+        "read": true,
+        "write": false
+      },
+      "audio": {
+        "read": false,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": true,
+      "streaming": true,
+      "json_mode": false
+    },
+    "context_window": 0,
+    "max_output_tokens": 0,
+    "training_cutoff": "",
+    "model_family": "gpt",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "openai",
+    "name": "gpt-4-0125-preview",
+    "display_name": "gpt-4-0125-preview",
+    "description": "Model data fetched from OpenAI API.",
+    "documentation_url": "https://platform.openai.com/docs/models/gpt-4-0125-preview",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": true
+      },
+      "image": {
+        "read": false,
+        "write": false
+      },
+      "audio": {
+        "read": false,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": true,
+      "streaming": true,
+      "json_mode": false
+    },
+    "context_window": 0,
+    "max_output_tokens": 0,
+    "training_cutoff": "",
+    "model_family": "gpt",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "openai",
+    "name": "gpt-4o-2024-11-20",
+    "display_name": "gpt-4o-2024-11-20",
+    "description": "Model data fetched from OpenAI API.",
+    "documentation_url": "https://platform.openai.com/docs/models/gpt-4o-2024-11-20",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": true
+      },
+      "image": {
+        "read": true,
+        "write": false
+      },
+      "audio": {
+        "read": false,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": true,
+      "streaming": true,
+      "json_mode": false
+    },
+    "context_window": 0,
+    "max_output_tokens": 0,
+    "training_cutoff": "",
+    "model_family": "gpt",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "openai",
+    "name": "gpt-4o-2024-05-13",
+    "display_name": "gpt-4o-2024-05-13",
+    "description": "Model data fetched from OpenAI API.",
+    "documentation_url": "https://platform.openai.com/docs/models/gpt-4o-2024-05-13",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": true
+      },
+      "image": {
+        "read": true,
+        "write": false
+      },
+      "audio": {
+        "read": false,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": true,
+      "streaming": true,
+      "json_mode": false
+    },
+    "context_window": 0,
+    "max_output_tokens": 0,
+    "training_cutoff": "",
+    "model_family": "gpt",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "openai",
+    "name": "text-embedding-3-large",
+    "display_name": "text-embedding-3-large",
+    "description": "Model data fetched from OpenAI API.",
+    "documentation_url": "https://platform.openai.com/docs/models/text-embedding-3-large",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": true
+      },
+      "image": {
+        "read": false,
+        "write": false
+      },
+      "audio": {
+        "read": false,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": false,
+      "streaming": true,
+      "json_mode": false
+    },
+    "context_window": 0,
+    "max_output_tokens": 0,
+    "training_cutoff": "",
+    "model_family": "text-embedding",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "openai",
+    "name": "o1-2024-12-17",
+    "display_name": "o1-2024-12-17",
+    "description": "Model data fetched from OpenAI API.",
+    "documentation_url": "https://platform.openai.com/docs/models/o1-2024-12-17",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": true
+      },
+      "image": {
+        "read": false,
+        "write": false
+      },
+      "audio": {
+        "read": false,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": false,
+      "streaming": true,
+      "json_mode": false
+    },
+    "context_window": 0,
+    "max_output_tokens": 0,
+    "training_cutoff": "",
+    "model_family": "o1",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "openai",
+    "name": "o1",
+    "display_name": "o1",
+    "description": "Model data fetched from OpenAI API.",
+    "documentation_url": "https://platform.openai.com/docs/models/o1",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": true
+      },
+      "image": {
+        "read": false,
+        "write": false
+      },
+      "audio": {
+        "read": false,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": false,
+      "streaming": true,
+      "json_mode": false
+    },
+    "context_window": 0,
+    "max_output_tokens": 0,
+    "training_cutoff": "",
+    "model_family": "o1",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "openai",
+    "name": "gpt-4-0613",
+    "display_name": "gpt-4-0613",
+    "description": "Model data fetched from OpenAI API.",
+    "documentation_url": "https://platform.openai.com/docs/models/gpt-4-0613",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": true
+      },
+      "image": {
+        "read": false,
+        "write": false
+      },
+      "audio": {
+        "read": false,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": true,
+      "streaming": true,
+      "json_mode": false
+    },
+    "context_window": 0,
+    "max_output_tokens": 0,
+    "training_cutoff": "",
+    "model_family": "gpt",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "openai",
+    "name": "o1-mini",
+    "display_name": "o1-mini",
+    "description": "Model data fetched from OpenAI API.",
+    "documentation_url": "https://platform.openai.com/docs/models/o1-mini",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": true
+      },
+      "image": {
+        "read": false,
+        "write": false
+      },
+      "audio": {
+        "read": false,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": false,
+      "streaming": true,
+      "json_mode": false
+    },
+    "context_window": 0,
+    "max_output_tokens": 0,
+    "training_cutoff": "",
+    "model_family": "o1",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "openai",
+    "name": "gpt-4o-mini-tts",
+    "display_name": "gpt-4o-mini-tts",
+    "description": "Model data fetched from OpenAI API.",
+    "documentation_url": "https://platform.openai.com/docs/models/gpt-4o-mini-tts",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": true
+      },
+      "image": {
+        "read": true,
+        "write": false
+      },
+      "audio": {
+        "read": false,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": true,
+      "streaming": true,
+      "json_mode": false
+    },
+    "context_window": 0,
+    "max_output_tokens": 0,
+    "training_cutoff": "",
+    "model_family": "gpt",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "openai",
+    "name": "o1-pro",
+    "display_name": "o1-pro",
+    "description": "Model data fetched from OpenAI API.",
+    "documentation_url": "https://platform.openai.com/docs/models/o1-pro",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": true
+      },
+      "image": {
+        "read": false,
+        "write": false
+      },
+      "audio": {
+        "read": false,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": false,
+      "streaming": true,
+      "json_mode": false
+    },
+    "context_window": 0,
+    "max_output_tokens": 0,
+    "training_cutoff": "",
+    "model_family": "o1",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "openai",
+    "name": "gpt-4o-transcribe",
+    "display_name": "gpt-4o-transcribe",
+    "description": "Model data fetched from OpenAI API.",
+    "documentation_url": "https://platform.openai.com/docs/models/gpt-4o-transcribe",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": true
+      },
+      "image": {
+        "read": true,
+        "write": false
+      },
+      "audio": {
+        "read": false,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": true,
+      "streaming": true,
+      "json_mode": false
+    },
+    "context_window": 0,
+    "max_output_tokens": 0,
+    "training_cutoff": "",
+    "model_family": "gpt",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "openai",
+    "name": "gpt-4.5-preview",
+    "display_name": "gpt-4.5-preview",
+    "description": "Model data fetched from OpenAI API.",
+    "documentation_url": "https://platform.openai.com/docs/models/gpt-4.5-preview",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": true
+      },
+      "image": {
+        "read": false,
+        "write": false
+      },
+      "audio": {
+        "read": false,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": true,
+      "streaming": true,
+      "json_mode": false
+    },
+    "context_window": 0,
+    "max_output_tokens": 0,
+    "training_cutoff": "",
+    "model_family": "gpt",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "openai",
+    "name": "o1-pro-2025-03-19",
+    "display_name": "o1-pro-2025-03-19",
+    "description": "Model data fetched from OpenAI API.",
+    "documentation_url": "https://platform.openai.com/docs/models/o1-pro-2025-03-19",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": true
+      },
+      "image": {
+        "read": false,
+        "write": false
+      },
+      "audio": {
+        "read": false,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": false,
+      "streaming": true,
+      "json_mode": false
+    },
+    "context_window": 0,
+    "max_output_tokens": 0,
+    "training_cutoff": "",
+    "model_family": "o1",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "openai",
+    "name": "gpt-4.5-preview-2025-02-27",
+    "display_name": "gpt-4.5-preview-2025-02-27",
+    "description": "Model data fetched from OpenAI API.",
+    "documentation_url": "https://platform.openai.com/docs/models/gpt-4.5-preview-2025-02-27",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": true
+      },
+      "image": {
+        "read": false,
+        "write": false
+      },
+      "audio": {
+        "read": false,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": true,
+      "streaming": true,
+      "json_mode": false
+    },
+    "context_window": 0,
+    "max_output_tokens": 0,
+    "training_cutoff": "",
+    "model_family": "gpt",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "openai",
+    "name": "gpt-4o-search-preview-2025-03-11",
+    "display_name": "gpt-4o-search-preview-2025-03-11",
+    "description": "Model data fetched from OpenAI API.",
+    "documentation_url": "https://platform.openai.com/docs/models/gpt-4o-search-preview-2025-03-11",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": true
+      },
+      "image": {
+        "read": true,
+        "write": false
+      },
+      "audio": {
+        "read": false,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": true,
+      "streaming": true,
+      "json_mode": false
+    },
+    "context_window": 0,
+    "max_output_tokens": 0,
+    "training_cutoff": "",
+    "model_family": "gpt",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "openai",
+    "name": "omni-moderation-2024-09-26",
+    "display_name": "omni-moderation-2024-09-26",
+    "description": "Model data fetched from OpenAI API.",
+    "documentation_url": "https://platform.openai.com/docs/models/omni-moderation-2024-09-26",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": true
+      },
+      "image": {
+        "read": false,
+        "write": false
+      },
+      "audio": {
+        "read": false,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": false,
+      "streaming": true,
+      "json_mode": false
+    },
+    "context_window": 0,
+    "max_output_tokens": 0,
+    "training_cutoff": "",
+    "model_family": "omni",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "openai",
+    "name": "gpt-image-1",
+    "display_name": "gpt-image-1",
+    "description": "Model data fetched from OpenAI API.",
+    "documentation_url": "https://platform.openai.com/docs/models/gpt-image-1",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": true
+      },
+      "image": {
+        "read": false,
+        "write": false
+      },
+      "audio": {
+        "read": false,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": false,
+      "streaming": true,
+      "json_mode": false
+    },
+    "context_window": 0,
+    "max_output_tokens": 0,
+    "training_cutoff": "",
+    "model_family": "gpt",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "openai",
+    "name": "o1-mini-2024-09-12",
+    "display_name": "o1-mini-2024-09-12",
+    "description": "Model data fetched from OpenAI API.",
+    "documentation_url": "https://platform.openai.com/docs/models/o1-mini-2024-09-12",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": true
+      },
+      "image": {
+        "read": false,
+        "write": false
+      },
+      "audio": {
+        "read": false,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": false,
+      "streaming": true,
+      "json_mode": false
+    },
+    "context_window": 0,
+    "max_output_tokens": 0,
+    "training_cutoff": "",
+    "model_family": "o1",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "openai",
+    "name": "tts-1-hd",
+    "display_name": "tts-1-hd",
+    "description": "Model data fetched from OpenAI API.",
+    "documentation_url": "https://platform.openai.com/docs/models/tts-1-hd",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": false
+      },
+      "image": {
+        "read": false,
+        "write": false
+      },
+      "audio": {
+        "read": false,
+        "write": true
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": false,
+      "streaming": true,
+      "json_mode": false
+    },
+    "context_window": 0,
+    "max_output_tokens": 0,
+    "training_cutoff": "",
+    "model_family": "tts",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "openai",
+    "name": "gpt-4o",
+    "display_name": "gpt-4o",
+    "description": "Model data fetched from OpenAI API.",
+    "documentation_url": "https://platform.openai.com/docs/models/gpt-4o",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": true
+      },
+      "image": {
+        "read": true,
+        "write": false
+      },
+      "audio": {
+        "read": false,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": true,
+      "streaming": true,
+      "json_mode": false
+    },
+    "context_window": 0,
+    "max_output_tokens": 0,
+    "training_cutoff": "",
+    "model_family": "gpt",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "openai",
+    "name": "tts-1-hd-1106",
+    "display_name": "tts-1-hd-1106",
+    "description": "Model data fetched from OpenAI API.",
+    "documentation_url": "https://platform.openai.com/docs/models/tts-1-hd-1106",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": false
+      },
+      "image": {
+        "read": false,
+        "write": false
+      },
+      "audio": {
+        "read": false,
+        "write": true
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": false,
+      "streaming": true,
+      "json_mode": false
+    },
+    "context_window": 0,
+    "max_output_tokens": 0,
+    "training_cutoff": "",
+    "model_family": "tts",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "openai",
+    "name": "gpt-4o-2024-08-06",
+    "display_name": "gpt-4o-2024-08-06",
+    "description": "Model data fetched from OpenAI API.",
+    "documentation_url": "https://platform.openai.com/docs/models/gpt-4o-2024-08-06",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": true
+      },
+      "image": {
+        "read": true,
+        "write": false
+      },
+      "audio": {
+        "read": false,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": true,
+      "streaming": true,
+      "json_mode": false
+    },
+    "context_window": 0,
+    "max_output_tokens": 0,
+    "training_cutoff": "",
+    "model_family": "gpt",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "openai",
+    "name": "gpt-4o-mini-2024-07-18",
+    "display_name": "gpt-4o-mini-2024-07-18",
+    "description": "Model data fetched from OpenAI API.",
+    "documentation_url": "https://platform.openai.com/docs/models/gpt-4o-mini-2024-07-18",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": true
+      },
+      "image": {
+        "read": true,
+        "write": false
+      },
+      "audio": {
+        "read": false,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": true,
+      "streaming": true,
+      "json_mode": false
+    },
+    "context_window": 0,
+    "max_output_tokens": 0,
+    "training_cutoff": "",
+    "model_family": "gpt",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "openai",
+    "name": "gpt-4.1-mini",
+    "display_name": "gpt-4.1-mini",
+    "description": "Model data fetched from OpenAI API.",
+    "documentation_url": "https://platform.openai.com/docs/models/gpt-4.1-mini",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": true
+      },
+      "image": {
+        "read": false,
+        "write": false
+      },
+      "audio": {
+        "read": false,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": true,
+      "streaming": true,
+      "json_mode": false
+    },
+    "context_window": 0,
+    "max_output_tokens": 0,
+    "training_cutoff": "",
+    "model_family": "gpt",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "openai",
+    "name": "gpt-4o-mini",
+    "display_name": "gpt-4o-mini",
+    "description": "Model data fetched from OpenAI API.",
+    "documentation_url": "https://platform.openai.com/docs/models/gpt-4o-mini",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": true
+      },
+      "image": {
+        "read": true,
+        "write": false
+      },
+      "audio": {
+        "read": false,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": true,
+      "streaming": true,
+      "json_mode": false
+    },
+    "context_window": 0,
+    "max_output_tokens": 0,
+    "training_cutoff": "",
+    "model_family": "gpt",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "openai",
+    "name": "gpt-4o-mini-audio-preview-2024-12-17",
+    "display_name": "gpt-4o-mini-audio-preview-2024-12-17",
+    "description": "Model data fetched from OpenAI API.",
+    "documentation_url": "https://platform.openai.com/docs/models/gpt-4o-mini-audio-preview-2024-12-17",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": true
+      },
+      "image": {
+        "read": true,
+        "write": false
+      },
+      "audio": {
+        "read": false,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": true,
+      "streaming": true,
+      "json_mode": false
+    },
+    "context_window": 0,
+    "max_output_tokens": 0,
+    "training_cutoff": "",
+    "model_family": "gpt",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "openai",
+    "name": "gpt-3.5-turbo-0125",
+    "display_name": "gpt-3.5-turbo-0125",
+    "description": "Model data fetched from OpenAI API.",
+    "documentation_url": "https://platform.openai.com/docs/models/gpt-3.5-turbo-0125",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": true
+      },
+      "image": {
+        "read": false,
+        "write": false
+      },
+      "audio": {
+        "read": false,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": false,
+      "streaming": true,
+      "json_mode": false
+    },
+    "context_window": 0,
+    "max_output_tokens": 0,
+    "training_cutoff": "",
+    "model_family": "gpt",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "openai",
+    "name": "gpt-4-turbo",
+    "display_name": "gpt-4-turbo",
+    "description": "Model data fetched from OpenAI API.",
+    "documentation_url": "https://platform.openai.com/docs/models/gpt-4-turbo",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": true
+      },
+      "image": {
+        "read": false,
+        "write": false
+      },
+      "audio": {
+        "read": false,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": true,
+      "streaming": true,
+      "json_mode": false
+    },
+    "context_window": 0,
+    "max_output_tokens": 0,
+    "training_cutoff": "",
+    "model_family": "gpt",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "openai",
+    "name": "tts-1",
+    "display_name": "tts-1",
+    "description": "Model data fetched from OpenAI API.",
+    "documentation_url": "https://platform.openai.com/docs/models/tts-1",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": false
+      },
+      "image": {
+        "read": false,
+        "write": false
+      },
+      "audio": {
+        "read": false,
+        "write": true
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": false,
+      "streaming": true,
+      "json_mode": false
+    },
+    "context_window": 0,
+    "max_output_tokens": 0,
+    "training_cutoff": "",
+    "model_family": "tts",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "openai",
+    "name": "gpt-4-turbo-2024-04-09",
+    "display_name": "gpt-4-turbo-2024-04-09",
+    "description": "Model data fetched from OpenAI API.",
+    "documentation_url": "https://platform.openai.com/docs/models/gpt-4-turbo-2024-04-09",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": true
+      },
+      "image": {
+        "read": false,
+        "write": false
+      },
+      "audio": {
+        "read": false,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": true,
+      "streaming": true,
+      "json_mode": false
+    },
+    "context_window": 0,
+    "max_output_tokens": 0,
+    "training_cutoff": "",
+    "model_family": "gpt",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "openai",
+    "name": "tts-1-1106",
+    "display_name": "tts-1-1106",
+    "description": "Model data fetched from OpenAI API.",
+    "documentation_url": "https://platform.openai.com/docs/models/tts-1-1106",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": false
+      },
+      "image": {
+        "read": false,
+        "write": false
+      },
+      "audio": {
+        "read": false,
+        "write": true
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": false,
+      "streaming": true,
+      "json_mode": false
+    },
+    "context_window": 0,
+    "max_output_tokens": 0,
+    "training_cutoff": "",
+    "model_family": "tts",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "openai",
+    "name": "gpt-4o-realtime-preview-2024-10-01",
+    "display_name": "gpt-4o-realtime-preview-2024-10-01",
+    "description": "Model data fetched from OpenAI API.",
+    "documentation_url": "https://platform.openai.com/docs/models/gpt-4o-realtime-preview-2024-10-01",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": true
+      },
+      "image": {
+        "read": true,
+        "write": false
+      },
+      "audio": {
+        "read": false,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": true,
+      "streaming": true,
+      "json_mode": false
+    },
+    "context_window": 0,
+    "max_output_tokens": 0,
+    "training_cutoff": "",
+    "model_family": "gpt",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "openai",
+    "name": "gpt-4o-mini-transcribe",
+    "display_name": "gpt-4o-mini-transcribe",
+    "description": "Model data fetched from OpenAI API.",
+    "documentation_url": "https://platform.openai.com/docs/models/gpt-4o-mini-transcribe",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": true
+      },
+      "image": {
+        "read": true,
+        "write": false
+      },
+      "audio": {
+        "read": false,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": true,
+      "streaming": true,
+      "json_mode": false
+    },
+    "context_window": 0,
+    "max_output_tokens": 0,
+    "training_cutoff": "",
+    "model_family": "gpt",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "openai",
+    "name": "gpt-4.1-mini-2025-04-14",
+    "display_name": "gpt-4.1-mini-2025-04-14",
+    "description": "Model data fetched from OpenAI API.",
+    "documentation_url": "https://platform.openai.com/docs/models/gpt-4.1-mini-2025-04-14",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": true
+      },
+      "image": {
+        "read": false,
+        "write": false
+      },
+      "audio": {
+        "read": false,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": true,
+      "streaming": true,
+      "json_mode": false
+    },
+    "context_window": 0,
+    "max_output_tokens": 0,
+    "training_cutoff": "",
+    "model_family": "gpt",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "openai",
+    "name": "o3-mini",
+    "display_name": "o3-mini",
+    "description": "Model data fetched from OpenAI API.",
+    "documentation_url": "https://platform.openai.com/docs/models/o3-mini",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": true
+      },
+      "image": {
+        "read": false,
+        "write": false
+      },
+      "audio": {
+        "read": false,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": false,
+      "streaming": true,
+      "json_mode": false
+    },
+    "context_window": 0,
+    "max_output_tokens": 0,
+    "training_cutoff": "",
+    "model_family": "o3",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "openai",
+    "name": "gpt-4.1",
+    "display_name": "gpt-4.1",
+    "description": "Model data fetched from OpenAI API.",
+    "documentation_url": "https://platform.openai.com/docs/models/gpt-4.1",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": true
+      },
+      "image": {
+        "read": false,
+        "write": false
+      },
+      "audio": {
+        "read": false,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": true,
+      "streaming": true,
+      "json_mode": false
+    },
+    "context_window": 0,
+    "max_output_tokens": 0,
+    "training_cutoff": "",
+    "model_family": "gpt",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "openai",
+    "name": "whisper-1",
+    "display_name": "whisper-1",
+    "description": "Model data fetched from OpenAI API.",
+    "documentation_url": "https://platform.openai.com/docs/models/whisper-1",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": true
+      },
+      "image": {
+        "read": false,
+        "write": false
+      },
+      "audio": {
+        "read": true,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": false,
+      "streaming": true,
+      "json_mode": false
+    },
+    "context_window": 0,
+    "max_output_tokens": 0,
+    "training_cutoff": "",
+    "model_family": "whisper",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "openai",
+    "name": "gpt-4.1-2025-04-14",
+    "display_name": "gpt-4.1-2025-04-14",
+    "description": "Model data fetched from OpenAI API.",
+    "documentation_url": "https://platform.openai.com/docs/models/gpt-4.1-2025-04-14",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": true
+      },
+      "image": {
+        "read": false,
+        "write": false
+      },
+      "audio": {
+        "read": false,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": true,
+      "streaming": true,
+      "json_mode": false
+    },
+    "context_window": 0,
+    "max_output_tokens": 0,
+    "training_cutoff": "",
+    "model_family": "gpt",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "openai",
+    "name": "omni-moderation-latest",
+    "display_name": "omni-moderation-latest",
+    "description": "Model data fetched from OpenAI API.",
+    "documentation_url": "https://platform.openai.com/docs/models/omni-moderation-latest",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": true
+      },
+      "image": {
+        "read": false,
+        "write": false
+      },
+      "audio": {
+        "read": false,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": false,
+      "streaming": true,
+      "json_mode": false
+    },
+    "context_window": 0,
+    "max_output_tokens": 0,
+    "training_cutoff": "",
+    "model_family": "omni",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "openai",
+    "name": "o4-mini",
+    "display_name": "o4-mini",
+    "description": "Model data fetched from OpenAI API.",
+    "documentation_url": "https://platform.openai.com/docs/models/o4-mini",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": true
+      },
+      "image": {
+        "read": false,
+        "write": false
+      },
+      "audio": {
+        "read": false,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": false,
+      "streaming": true,
+      "json_mode": false
+    },
+    "context_window": 0,
+    "max_output_tokens": 0,
+    "training_cutoff": "",
+    "model_family": "o4",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "openai",
+    "name": "o4-mini-2025-04-16",
+    "display_name": "o4-mini-2025-04-16",
+    "description": "Model data fetched from OpenAI API.",
+    "documentation_url": "https://platform.openai.com/docs/models/o4-mini-2025-04-16",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": true
+      },
+      "image": {
+        "read": false,
+        "write": false
+      },
+      "audio": {
+        "read": false,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": false,
+      "streaming": true,
+      "json_mode": false
+    },
+    "context_window": 0,
+    "max_output_tokens": 0,
+    "training_cutoff": "",
+    "model_family": "o4",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "openai",
+    "name": "codex-mini-latest",
+    "display_name": "codex-mini-latest",
+    "description": "Model data fetched from OpenAI API.",
+    "documentation_url": "https://platform.openai.com/docs/models/codex-mini-latest",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": true
+      },
+      "image": {
+        "read": false,
+        "write": false
+      },
+      "audio": {
+        "read": false,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": false,
+      "streaming": true,
+      "json_mode": false
+    },
+    "context_window": 0,
+    "max_output_tokens": 0,
+    "training_cutoff": "",
+    "model_family": "codex",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "openai",
+    "name": "o1-preview-2024-09-12",
+    "display_name": "o1-preview-2024-09-12",
+    "description": "Model data fetched from OpenAI API.",
+    "documentation_url": "https://platform.openai.com/docs/models/o1-preview-2024-09-12",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": true
+      },
+      "image": {
+        "read": false,
+        "write": false
+      },
+      "audio": {
+        "read": false,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": false,
+      "streaming": true,
+      "json_mode": false
+    },
+    "context_window": 0,
+    "max_output_tokens": 0,
+    "training_cutoff": "",
+    "model_family": "o1",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "openai",
+    "name": "o1-preview",
+    "display_name": "o1-preview",
+    "description": "Model data fetched from OpenAI API.",
+    "documentation_url": "https://platform.openai.com/docs/models/o1-preview",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": true
+      },
+      "image": {
+        "read": false,
+        "write": false
+      },
+      "audio": {
+        "read": false,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": false,
+      "streaming": true,
+      "json_mode": false
+    },
+    "context_window": 0,
+    "max_output_tokens": 0,
+    "training_cutoff": "",
+    "model_family": "o1",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "google",
+    "name": "embedding-gecko-001",
+    "display_name": "Embedding Gecko",
+    "description": "Obtain a distributed representation of a text.",
+    "documentation_url": "https://ai.google.dev/models/embedding",
+    "capabilities": {
+      "text": {
+        "read": false,
+        "write": false
+      },
+      "image": {
+        "read": false,
+        "write": false
+      },
+      "audio": {
+        "read": false,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": false,
+      "streaming": false,
+      "json_mode": false
+    },
+    "context_window": 1024,
+    "max_output_tokens": 1,
+    "training_cutoff": "",
+    "model_family": "embedding (v001)",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "google",
+    "name": "gemini-1.0-pro-vision-latest",
+    "display_name": "Gemini 1.0 Pro Vision",
+    "description": "The original Gemini 1.0 Pro Vision model version which was optimized for image understanding. Gemini 1.0 Pro Vision was deprecated on July 12, 2024. Move to a newer Gemini version.",
+    "documentation_url": "https://ai.google.dev/models/gemini",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": true
+      },
+      "image": {
+        "read": true,
+        "write": false
+      },
+      "audio": {
+        "read": true,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": true,
+      "streaming": false,
+      "json_mode": false
+    },
+    "context_window": 12288,
+    "max_output_tokens": 4096,
+    "training_cutoff": "",
+    "model_family": "gemini (v001)",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "google",
+    "name": "gemini-pro-vision",
+    "display_name": "Gemini 1.0 Pro Vision",
+    "description": "The original Gemini 1.0 Pro Vision model version which was optimized for image understanding. Gemini 1.0 Pro Vision was deprecated on July 12, 2024. Move to a newer Gemini version.",
+    "documentation_url": "https://ai.google.dev/models/gemini",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": true
+      },
+      "image": {
+        "read": true,
+        "write": false
+      },
+      "audio": {
+        "read": true,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": true,
+      "streaming": false,
+      "json_mode": false
+    },
+    "context_window": 12288,
+    "max_output_tokens": 4096,
+    "training_cutoff": "",
+    "model_family": "gemini (v001)",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "google",
+    "name": "gemini-1.5-pro-latest",
+    "display_name": "Gemini 1.5 Pro Latest",
+    "description": "Alias that points to the most recent production (non-experimental) release of Gemini 1.5 Pro, our mid-size multimodal model that supports up to 2 million tokens.",
+    "documentation_url": "https://ai.google.dev/models/gemini",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": true
+      },
+      "image": {
+        "read": true,
+        "write": false
+      },
+      "audio": {
+        "read": true,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": true,
+      "streaming": false,
+      "json_mode": false
+    },
+    "context_window": 2000000,
+    "max_output_tokens": 8192,
+    "training_cutoff": "",
+    "model_family": "gemini (v001)",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "google",
+    "name": "gemini-1.5-pro-001",
+    "display_name": "Gemini 1.5 Pro 001",
+    "description": "Stable version of Gemini 1.5 Pro, our mid-size multimodal model that supports up to 2 million tokens, released in May of 2024.",
+    "documentation_url": "https://ai.google.dev/models/gemini",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": true
+      },
+      "image": {
+        "read": true,
+        "write": false
+      },
+      "audio": {
+        "read": true,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": true,
+      "streaming": false,
+      "json_mode": false
+    },
+    "context_window": 2000000,
+    "max_output_tokens": 8192,
+    "training_cutoff": "",
+    "model_family": "gemini (v001)",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "google",
+    "name": "gemini-1.5-pro-002",
+    "display_name": "Gemini 1.5 Pro 002",
+    "description": "Stable version of Gemini 1.5 Pro, our mid-size multimodal model that supports up to 2 million tokens, released in September of 2024.",
+    "documentation_url": "https://ai.google.dev/models/gemini",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": true
+      },
+      "image": {
+        "read": true,
+        "write": false
+      },
+      "audio": {
+        "read": true,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": true,
+      "streaming": false,
+      "json_mode": false
+    },
+    "context_window": 2000000,
+    "max_output_tokens": 8192,
+    "training_cutoff": "",
+    "model_family": "gemini (v002)",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "google",
+    "name": "gemini-1.5-pro",
+    "display_name": "Gemini 1.5 Pro",
+    "description": "Stable version of Gemini 1.5 Pro, our mid-size multimodal model that supports up to 2 million tokens, released in May of 2024.",
+    "documentation_url": "https://ai.google.dev/models/gemini",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": true
+      },
+      "image": {
+        "read": true,
+        "write": false
+      },
+      "audio": {
+        "read": true,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": true,
+      "streaming": false,
+      "json_mode": false
+    },
+    "context_window": 2000000,
+    "max_output_tokens": 8192,
+    "training_cutoff": "",
+    "model_family": "gemini (v001)",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "google",
+    "name": "gemini-1.5-flash-latest",
+    "display_name": "Gemini 1.5 Flash Latest",
+    "description": "Alias that points to the most recent production (non-experimental) release of Gemini 1.5 Flash, our fast and versatile multimodal model for scaling across diverse tasks.",
+    "documentation_url": "https://ai.google.dev/models/gemini",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": true
+      },
+      "image": {
+        "read": true,
+        "write": false
+      },
+      "audio": {
+        "read": true,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": true,
+      "streaming": false,
+      "json_mode": false
+    },
+    "context_window": 1000000,
+    "max_output_tokens": 8192,
+    "training_cutoff": "",
+    "model_family": "gemini (v001)",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "google",
+    "name": "gemini-1.5-flash-001",
+    "display_name": "Gemini 1.5 Flash 001",
+    "description": "Stable version of Gemini 1.5 Flash, our fast and versatile multimodal model for scaling across diverse tasks, released in May of 2024.",
+    "documentation_url": "https://ai.google.dev/models/gemini",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": true
+      },
+      "image": {
+        "read": true,
+        "write": false
+      },
+      "audio": {
+        "read": true,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": true,
+      "streaming": false,
+      "json_mode": false
+    },
+    "context_window": 1000000,
+    "max_output_tokens": 8192,
+    "training_cutoff": "",
+    "model_family": "gemini (v001)",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "google",
+    "name": "gemini-1.5-flash-001-tuning",
+    "display_name": "Gemini 1.5 Flash 001 Tuning",
+    "description": "Version of Gemini 1.5 Flash that supports tuning, our fast and versatile multimodal model for scaling across diverse tasks, released in May of 2024.",
+    "documentation_url": "https://ai.google.dev/models/gemini",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": true
+      },
+      "image": {
+        "read": true,
+        "write": false
+      },
+      "audio": {
+        "read": true,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": true,
+      "streaming": false,
+      "json_mode": false
+    },
+    "context_window": 16384,
+    "max_output_tokens": 8192,
+    "training_cutoff": "",
+    "model_family": "gemini (v001)",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "google",
+    "name": "gemini-1.5-flash",
+    "display_name": "Gemini 1.5 Flash",
+    "description": "Alias that points to the most recent stable version of Gemini 1.5 Flash, our fast and versatile multimodal model for scaling across diverse tasks.",
+    "documentation_url": "https://ai.google.dev/models/gemini",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": true
+      },
+      "image": {
+        "read": true,
+        "write": false
+      },
+      "audio": {
+        "read": true,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": true,
+      "streaming": false,
+      "json_mode": false
+    },
+    "context_window": 1000000,
+    "max_output_tokens": 8192,
+    "training_cutoff": "",
+    "model_family": "gemini (v001)",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "google",
+    "name": "gemini-1.5-flash-002",
+    "display_name": "Gemini 1.5 Flash 002",
+    "description": "Stable version of Gemini 1.5 Flash, our fast and versatile multimodal model for scaling across diverse tasks, released in September of 2024.",
+    "documentation_url": "https://ai.google.dev/models/gemini",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": true
+      },
+      "image": {
+        "read": true,
+        "write": false
+      },
+      "audio": {
+        "read": true,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": true,
+      "streaming": false,
+      "json_mode": false
+    },
+    "context_window": 1000000,
+    "max_output_tokens": 8192,
+    "training_cutoff": "",
+    "model_family": "gemini (v002)",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "google",
+    "name": "gemini-1.5-flash-8b",
+    "display_name": "Gemini 1.5 Flash-8B",
+    "description": "Stable version of Gemini 1.5 Flash-8B, our smallest and most cost effective Flash model, released in October of 2024.",
+    "documentation_url": "https://ai.google.dev/models/gemini",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": true
+      },
+      "image": {
+        "read": true,
+        "write": false
+      },
+      "audio": {
+        "read": true,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": true,
+      "streaming": false,
+      "json_mode": false
+    },
+    "context_window": 1000000,
+    "max_output_tokens": 8192,
+    "training_cutoff": "",
+    "model_family": "gemini (v001)",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "google",
+    "name": "gemini-1.5-flash-8b-001",
+    "display_name": "Gemini 1.5 Flash-8B 001",
+    "description": "Stable version of Gemini 1.5 Flash-8B, our smallest and most cost effective Flash model, released in October of 2024.",
+    "documentation_url": "https://ai.google.dev/models/gemini",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": true
+      },
+      "image": {
+        "read": true,
+        "write": false
+      },
+      "audio": {
+        "read": true,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": true,
+      "streaming": false,
+      "json_mode": false
+    },
+    "context_window": 1000000,
+    "max_output_tokens": 8192,
+    "training_cutoff": "",
+    "model_family": "gemini (v001)",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "google",
+    "name": "gemini-1.5-flash-8b-latest",
+    "display_name": "Gemini 1.5 Flash-8B Latest",
+    "description": "Alias that points to the most recent production (non-experimental) release of Gemini 1.5 Flash-8B, our smallest and most cost effective Flash model, released in October of 2024.",
+    "documentation_url": "https://ai.google.dev/models/gemini",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": true
+      },
+      "image": {
+        "read": true,
+        "write": false
+      },
+      "audio": {
+        "read": true,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": true,
+      "streaming": false,
+      "json_mode": false
+    },
+    "context_window": 1000000,
+    "max_output_tokens": 8192,
+    "training_cutoff": "",
+    "model_family": "gemini (v001)",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "google",
+    "name": "gemini-1.5-flash-8b-exp-0827",
+    "display_name": "Gemini 1.5 Flash 8B Experimental 0827",
+    "description": "Experimental release (August 27th, 2024) of Gemini 1.5 Flash-8B, our smallest and most cost effective Flash model. Replaced by Gemini-1.5-flash-8b-001 (stable).",
+    "documentation_url": "https://ai.google.dev/models/gemini",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": true
+      },
+      "image": {
+        "read": true,
+        "write": false
+      },
+      "audio": {
+        "read": true,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": true,
+      "streaming": false,
+      "json_mode": false
+    },
+    "context_window": 1000000,
+    "max_output_tokens": 8192,
+    "training_cutoff": "",
+    "model_family": "gemini (v001)",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "google",
+    "name": "gemini-1.5-flash-8b-exp-0924",
+    "display_name": "Gemini 1.5 Flash 8B Experimental 0924",
+    "description": "Experimental release (September 24th, 2024) of Gemini 1.5 Flash-8B, our smallest and most cost effective Flash model. Replaced by Gemini-1.5-flash-8b-001 (stable).",
+    "documentation_url": "https://ai.google.dev/models/gemini",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": true
+      },
+      "image": {
+        "read": true,
+        "write": false
+      },
+      "audio": {
+        "read": true,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": true,
+      "streaming": false,
+      "json_mode": false
+    },
+    "context_window": 1000000,
+    "max_output_tokens": 8192,
+    "training_cutoff": "",
+    "model_family": "gemini (v001)",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "google",
+    "name": "gemini-2.5-pro-exp-03-25",
+    "display_name": "Gemini 2.5 Pro Experimental 03-25",
+    "description": "Experimental release (March 25th, 2025) of Gemini 2.5 Pro",
+    "documentation_url": "https://ai.google.dev/models/gemini",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": true
+      },
+      "image": {
+        "read": false,
+        "write": false
+      },
+      "audio": {
+        "read": false,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": true,
+      "streaming": false,
+      "json_mode": false
+    },
+    "context_window": 1048576,
+    "max_output_tokens": 65536,
+    "training_cutoff": "",
+    "model_family": "gemini (v2.5-exp-03-25)",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "google",
+    "name": "gemini-2.5-pro-preview-03-25",
+    "display_name": "Gemini 2.5 Pro Preview 03-25",
+    "description": "Gemini 2.5 Pro Preview 03-25",
+    "documentation_url": "https://ai.google.dev/models/gemini",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": true
+      },
+      "image": {
+        "read": false,
+        "write": false
+      },
+      "audio": {
+        "read": false,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": true,
+      "streaming": false,
+      "json_mode": false
+    },
+    "context_window": 1048576,
+    "max_output_tokens": 65536,
+    "training_cutoff": "",
+    "model_family": "gemini (v2.5-preview-03-25)",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "google",
+    "name": "gemini-2.5-flash-preview-04-17",
+    "display_name": "Gemini 2.5 Flash Preview 04-17",
+    "description": "Preview release (April 17th, 2025) of Gemini 2.5 Flash",
+    "documentation_url": "https://ai.google.dev/models/gemini",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": true
+      },
+      "image": {
+        "read": false,
+        "write": false
+      },
+      "audio": {
+        "read": false,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": true,
+      "streaming": false,
+      "json_mode": false
+    },
+    "context_window": 1048576,
+    "max_output_tokens": 65536,
+    "training_cutoff": "",
+    "model_family": "gemini (v2.5-preview-04-17)",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "google",
+    "name": "gemini-2.5-flash-preview-05-20",
+    "display_name": "Gemini 2.5 Flash Preview 05-20",
+    "description": "Preview release (April 17th, 2025) of Gemini 2.5 Flash",
+    "documentation_url": "https://ai.google.dev/models/gemini",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": true
+      },
+      "image": {
+        "read": false,
+        "write": false
+      },
+      "audio": {
+        "read": false,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": true,
+      "streaming": false,
+      "json_mode": false
+    },
+    "context_window": 1048576,
+    "max_output_tokens": 65536,
+    "training_cutoff": "",
+    "model_family": "gemini (v2.5-preview-05-20)",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "google",
+    "name": "gemini-2.5-flash-preview-04-17-thinking",
+    "display_name": "Gemini 2.5 Flash Preview 04-17 for cursor testing",
+    "description": "Preview release (April 17th, 2025) of Gemini 2.5 Flash",
+    "documentation_url": "https://ai.google.dev/models/gemini",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": true
+      },
+      "image": {
+        "read": false,
+        "write": false
+      },
+      "audio": {
+        "read": false,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": true,
+      "streaming": false,
+      "json_mode": false
+    },
+    "context_window": 1048576,
+    "max_output_tokens": 65536,
+    "training_cutoff": "",
+    "model_family": "gemini (v2.5-preview-04-17)",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "google",
+    "name": "gemini-2.5-pro-preview-05-06",
+    "display_name": "Gemini 2.5 Pro Preview 05-06",
+    "description": "Preview release (May 6th, 2025) of Gemini 2.5 Pro",
+    "documentation_url": "https://ai.google.dev/models/gemini",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": true
+      },
+      "image": {
+        "read": false,
+        "write": false
+      },
+      "audio": {
+        "read": false,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": true,
+      "streaming": false,
+      "json_mode": false
+    },
+    "context_window": 1048576,
+    "max_output_tokens": 65536,
+    "training_cutoff": "",
+    "model_family": "gemini (v2.5-preview-05-06)",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "google",
+    "name": "gemini-2.0-flash-exp",
+    "display_name": "Gemini 2.0 Flash Experimental",
+    "description": "Gemini 2.0 Flash Experimental",
+    "documentation_url": "https://ai.google.dev/models/gemini",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": true
+      },
+      "image": {
+        "read": false,
+        "write": false
+      },
+      "audio": {
+        "read": false,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": true,
+      "streaming": false,
+      "json_mode": false
+    },
+    "context_window": 1048576,
+    "max_output_tokens": 8192,
+    "training_cutoff": "",
+    "model_family": "gemini (v2.0)",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "google",
+    "name": "gemini-2.0-flash",
+    "display_name": "Gemini 2.0 Flash",
+    "description": "Gemini 2.0 Flash",
+    "documentation_url": "https://ai.google.dev/models/gemini",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": true
+      },
+      "image": {
+        "read": false,
+        "write": false
+      },
+      "audio": {
+        "read": false,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": true,
+      "streaming": false,
+      "json_mode": false
+    },
+    "context_window": 1048576,
+    "max_output_tokens": 8192,
+    "training_cutoff": "",
+    "model_family": "gemini (v2.0)",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "google",
+    "name": "gemini-2.0-flash-001",
+    "display_name": "Gemini 2.0 Flash 001",
+    "description": "Stable version of Gemini 2.0 Flash, our fast and versatile multimodal model for scaling across diverse tasks, released in January of 2025.",
+    "documentation_url": "https://ai.google.dev/models/gemini",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": true
+      },
+      "image": {
+        "read": false,
+        "write": false
+      },
+      "audio": {
+        "read": false,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": true,
+      "streaming": false,
+      "json_mode": false
+    },
+    "context_window": 1048576,
+    "max_output_tokens": 8192,
+    "training_cutoff": "",
+    "model_family": "gemini (v2.0)",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "google",
+    "name": "gemini-2.0-flash-exp-image-generation",
+    "display_name": "Gemini 2.0 Flash (Image Generation) Experimental",
+    "description": "Gemini 2.0 Flash (Image Generation) Experimental",
+    "documentation_url": "https://ai.google.dev/models/gemini",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": true
+      },
+      "image": {
+        "read": false,
+        "write": false
+      },
+      "audio": {
+        "read": false,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": true,
+      "streaming": false,
+      "json_mode": false
+    },
+    "context_window": 1048576,
+    "max_output_tokens": 8192,
+    "training_cutoff": "",
+    "model_family": "gemini (v2.0)",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "google",
+    "name": "gemini-2.0-flash-lite-001",
+    "display_name": "Gemini 2.0 Flash-Lite 001",
+    "description": "Stable version of Gemini 2.0 Flash Lite",
+    "documentation_url": "https://ai.google.dev/models/gemini",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": true
+      },
+      "image": {
+        "read": false,
+        "write": false
+      },
+      "audio": {
+        "read": false,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": true,
+      "streaming": false,
+      "json_mode": false
+    },
+    "context_window": 1048576,
+    "max_output_tokens": 8192,
+    "training_cutoff": "",
+    "model_family": "gemini (v2.0)",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "google",
+    "name": "gemini-2.0-flash-lite",
+    "display_name": "Gemini 2.0 Flash-Lite",
+    "description": "Gemini 2.0 Flash-Lite",
+    "documentation_url": "https://ai.google.dev/models/gemini",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": true
+      },
+      "image": {
+        "read": false,
+        "write": false
+      },
+      "audio": {
+        "read": false,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": true,
+      "streaming": false,
+      "json_mode": false
+    },
+    "context_window": 1048576,
+    "max_output_tokens": 8192,
+    "training_cutoff": "",
+    "model_family": "gemini (v2.0)",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "google",
+    "name": "gemini-2.0-flash-preview-image-generation",
+    "display_name": "Gemini 2.0 Flash Preview Image Generation",
+    "description": "Gemini 2.0 Flash Preview Image Generation",
+    "documentation_url": "https://ai.google.dev/models/gemini",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": true
+      },
+      "image": {
+        "read": false,
+        "write": false
+      },
+      "audio": {
+        "read": false,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": true,
+      "streaming": false,
+      "json_mode": false
+    },
+    "context_window": 32768,
+    "max_output_tokens": 8192,
+    "training_cutoff": "",
+    "model_family": "gemini (v2.0)",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "google",
+    "name": "gemini-2.0-flash-lite-preview-02-05",
+    "display_name": "Gemini 2.0 Flash-Lite Preview 02-05",
+    "description": "Preview release (February 5th, 2025) of Gemini 2.0 Flash Lite",
+    "documentation_url": "https://ai.google.dev/models/gemini",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": true
+      },
+      "image": {
+        "read": false,
+        "write": false
+      },
+      "audio": {
+        "read": false,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": true,
+      "streaming": false,
+      "json_mode": false
+    },
+    "context_window": 1048576,
+    "max_output_tokens": 8192,
+    "training_cutoff": "",
+    "model_family": "gemini (vpreview-02-05)",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "google",
+    "name": "gemini-2.0-flash-lite-preview",
+    "display_name": "Gemini 2.0 Flash-Lite Preview",
+    "description": "Preview release (February 5th, 2025) of Gemini 2.0 Flash Lite",
+    "documentation_url": "https://ai.google.dev/models/gemini",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": true
+      },
+      "image": {
+        "read": false,
+        "write": false
+      },
+      "audio": {
+        "read": false,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": true,
+      "streaming": false,
+      "json_mode": false
+    },
+    "context_window": 1048576,
+    "max_output_tokens": 8192,
+    "training_cutoff": "",
+    "model_family": "gemini (vpreview-02-05)",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "google",
+    "name": "gemini-2.0-pro-exp",
+    "display_name": "Gemini 2.0 Pro Experimental",
+    "description": "Experimental release (March 25th, 2025) of Gemini 2.5 Pro",
+    "documentation_url": "https://ai.google.dev/models/gemini",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": true
+      },
+      "image": {
+        "read": false,
+        "write": false
+      },
+      "audio": {
+        "read": false,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": true,
+      "streaming": false,
+      "json_mode": false
+    },
+    "context_window": 1048576,
+    "max_output_tokens": 65536,
+    "training_cutoff": "",
+    "model_family": "gemini (v2.5-exp-03-25)",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "google",
+    "name": "gemini-2.0-pro-exp-02-05",
+    "display_name": "Gemini 2.0 Pro Experimental 02-05",
+    "description": "Experimental release (March 25th, 2025) of Gemini 2.5 Pro",
+    "documentation_url": "https://ai.google.dev/models/gemini",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": true
+      },
+      "image": {
+        "read": false,
+        "write": false
+      },
+      "audio": {
+        "read": false,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": true,
+      "streaming": false,
+      "json_mode": false
+    },
+    "context_window": 1048576,
+    "max_output_tokens": 65536,
+    "training_cutoff": "",
+    "model_family": "gemini (v2.5-exp-03-25)",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "google",
+    "name": "gemini-exp-1206",
+    "display_name": "Gemini Experimental 1206",
+    "description": "Experimental release (March 25th, 2025) of Gemini 2.5 Pro",
+    "documentation_url": "https://ai.google.dev/models/gemini",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": true
+      },
+      "image": {
+        "read": false,
+        "write": false
+      },
+      "audio": {
+        "read": false,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": true,
+      "streaming": false,
+      "json_mode": false
+    },
+    "context_window": 1048576,
+    "max_output_tokens": 65536,
+    "training_cutoff": "",
+    "model_family": "gemini (v2.5-exp-03-25)",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "google",
+    "name": "gemini-2.0-flash-thinking-exp-01-21",
+    "display_name": "Gemini 2.5 Flash Preview 04-17",
+    "description": "Preview release (April 17th, 2025) of Gemini 2.5 Flash",
+    "documentation_url": "https://ai.google.dev/models/gemini",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": true
+      },
+      "image": {
+        "read": false,
+        "write": false
+      },
+      "audio": {
+        "read": false,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": true,
+      "streaming": false,
+      "json_mode": false
+    },
+    "context_window": 1048576,
+    "max_output_tokens": 65536,
+    "training_cutoff": "",
+    "model_family": "gemini (v2.5-preview-04-17)",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "google",
+    "name": "gemini-2.0-flash-thinking-exp",
+    "display_name": "Gemini 2.5 Flash Preview 04-17",
+    "description": "Preview release (April 17th, 2025) of Gemini 2.5 Flash",
+    "documentation_url": "https://ai.google.dev/models/gemini",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": true
+      },
+      "image": {
+        "read": false,
+        "write": false
+      },
+      "audio": {
+        "read": false,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": true,
+      "streaming": false,
+      "json_mode": false
+    },
+    "context_window": 1048576,
+    "max_output_tokens": 65536,
+    "training_cutoff": "",
+    "model_family": "gemini (v2.5-preview-04-17)",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "google",
+    "name": "gemini-2.0-flash-thinking-exp-1219",
+    "display_name": "Gemini 2.5 Flash Preview 04-17",
+    "description": "Preview release (April 17th, 2025) of Gemini 2.5 Flash",
+    "documentation_url": "https://ai.google.dev/models/gemini",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": true
+      },
+      "image": {
+        "read": false,
+        "write": false
+      },
+      "audio": {
+        "read": false,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": true,
+      "streaming": false,
+      "json_mode": false
+    },
+    "context_window": 1048576,
+    "max_output_tokens": 65536,
+    "training_cutoff": "",
+    "model_family": "gemini (v2.5-preview-04-17)",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "google",
+    "name": "gemini-2.5-flash-preview-tts",
+    "display_name": "Gemini 2.5 Flash Preview TTS",
+    "description": "Gemini 2.5 Flash Preview TTS",
+    "documentation_url": "https://ai.google.dev/models/gemini",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": true
+      },
+      "image": {
+        "read": false,
+        "write": false
+      },
+      "audio": {
+        "read": false,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": true,
+      "streaming": false,
+      "json_mode": false
+    },
+    "context_window": 32768,
+    "max_output_tokens": 8192,
+    "training_cutoff": "",
+    "model_family": "gemini (vgemini-2.5-flash-exp-tts-2025-05-19)",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "google",
+    "name": "gemini-2.5-pro-preview-tts",
+    "display_name": "Gemini 2.5 Pro Preview TTS",
+    "description": "Gemini 2.5 Pro Preview TTS",
+    "documentation_url": "https://ai.google.dev/models/gemini",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": true
+      },
+      "image": {
+        "read": false,
+        "write": false
+      },
+      "audio": {
+        "read": false,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": true,
+      "streaming": false,
+      "json_mode": false
+    },
+    "context_window": 65536,
+    "max_output_tokens": 65536,
+    "training_cutoff": "",
+    "model_family": "gemini (vgemini-2.5-pro-preview-tts-2025-05-19)",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "google",
+    "name": "learnlm-2.0-flash-experimental",
+    "display_name": "LearnLM 2.0 Flash Experimental",
+    "description": "LearnLM 2.0 Flash Experimental",
+    "documentation_url": "https://ai.google.dev/models/learnlm",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": true
+      },
+      "image": {
+        "read": false,
+        "write": false
+      },
+      "audio": {
+        "read": false,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": false,
+      "streaming": false,
+      "json_mode": false
+    },
+    "context_window": 1048576,
+    "max_output_tokens": 32768,
+    "training_cutoff": "",
+    "model_family": "learnlm (v2.0)",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "google",
+    "name": "gemma-3-1b-it",
+    "display_name": "Gemma 3 1B",
+    "description": "",
+    "documentation_url": "https://ai.google.dev/models/gemma",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": true
+      },
+      "image": {
+        "read": false,
+        "write": false
+      },
+      "audio": {
+        "read": false,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": false,
+      "streaming": false,
+      "json_mode": false
+    },
+    "context_window": 32768,
+    "max_output_tokens": 8192,
+    "training_cutoff": "",
+    "model_family": "gemma (v001)",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "google",
+    "name": "gemma-3-4b-it",
+    "display_name": "Gemma 3 4B",
+    "description": "",
+    "documentation_url": "https://ai.google.dev/models/gemma",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": true
+      },
+      "image": {
+        "read": false,
+        "write": false
+      },
+      "audio": {
+        "read": false,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": false,
+      "streaming": false,
+      "json_mode": false
+    },
+    "context_window": 32768,
+    "max_output_tokens": 8192,
+    "training_cutoff": "",
+    "model_family": "gemma (v001)",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "google",
+    "name": "gemma-3-12b-it",
+    "display_name": "Gemma 3 12B",
+    "description": "",
+    "documentation_url": "https://ai.google.dev/models/gemma",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": true
+      },
+      "image": {
+        "read": false,
+        "write": false
+      },
+      "audio": {
+        "read": false,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": false,
+      "streaming": false,
+      "json_mode": false
+    },
+    "context_window": 32768,
+    "max_output_tokens": 8192,
+    "training_cutoff": "",
+    "model_family": "gemma (v001)",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "google",
+    "name": "gemma-3-27b-it",
+    "display_name": "Gemma 3 27B",
+    "description": "",
+    "documentation_url": "https://ai.google.dev/models/gemma",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": true
+      },
+      "image": {
+        "read": false,
+        "write": false
+      },
+      "audio": {
+        "read": false,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": false,
+      "streaming": false,
+      "json_mode": false
+    },
+    "context_window": 131072,
+    "max_output_tokens": 8192,
+    "training_cutoff": "",
+    "model_family": "gemma (v001)",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "google",
+    "name": "gemma-3n-e4b-it",
+    "display_name": "Gemma 3n E4B",
+    "description": "",
+    "documentation_url": "https://ai.google.dev/models/gemma",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": true
+      },
+      "image": {
+        "read": false,
+        "write": false
+      },
+      "audio": {
+        "read": false,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": false,
+      "streaming": false,
+      "json_mode": false
+    },
+    "context_window": 8192,
+    "max_output_tokens": 2048,
+    "training_cutoff": "",
+    "model_family": "gemma (v001)",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "google",
+    "name": "embedding-001",
+    "display_name": "Embedding 001",
+    "description": "Obtain a distributed representation of a text.",
+    "documentation_url": "https://ai.google.dev/models/embedding",
+    "capabilities": {
+      "text": {
+        "read": false,
+        "write": false
+      },
+      "image": {
+        "read": false,
+        "write": false
+      },
+      "audio": {
+        "read": false,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": false,
+      "streaming": false,
+      "json_mode": false
+    },
+    "context_window": 2048,
+    "max_output_tokens": 1,
+    "training_cutoff": "",
+    "model_family": "embedding (v001)",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "google",
+    "name": "text-embedding-004",
+    "display_name": "Text Embedding 004",
+    "description": "Obtain a distributed representation of a text.",
+    "documentation_url": "https://ai.google.dev/models/text",
+    "capabilities": {
+      "text": {
+        "read": false,
+        "write": false
+      },
+      "image": {
+        "read": false,
+        "write": false
+      },
+      "audio": {
+        "read": false,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": false,
+      "streaming": false,
+      "json_mode": false
+    },
+    "context_window": 2048,
+    "max_output_tokens": 1,
+    "training_cutoff": "",
+    "model_family": "text (v004)",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "google",
+    "name": "gemini-embedding-exp-03-07",
+    "display_name": "Gemini Embedding Experimental 03-07",
+    "description": "Obtain a distributed representation of a text.",
+    "documentation_url": "https://ai.google.dev/models/gemini",
+    "capabilities": {
+      "text": {
+        "read": false,
+        "write": false
+      },
+      "image": {
+        "read": false,
+        "write": false
+      },
+      "audio": {
+        "read": false,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": true,
+      "streaming": false,
+      "json_mode": false
+    },
+    "context_window": 8192,
+    "max_output_tokens": 1,
+    "training_cutoff": "",
+    "model_family": "gemini (vexp-03-07)",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "google",
+    "name": "gemini-embedding-exp",
+    "display_name": "Gemini Embedding Experimental",
+    "description": "Obtain a distributed representation of a text.",
+    "documentation_url": "https://ai.google.dev/models/gemini",
+    "capabilities": {
+      "text": {
+        "read": false,
+        "write": false
+      },
+      "image": {
+        "read": false,
+        "write": false
+      },
+      "audio": {
+        "read": false,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": true,
+      "streaming": false,
+      "json_mode": false
+    },
+    "context_window": 8192,
+    "max_output_tokens": 1,
+    "training_cutoff": "",
+    "model_family": "gemini (vexp-03-07)",
+    "pricing": {
+      "input_per_1k_tokens": 0,
+      "output_per_1k_tokens": 0
+    },
+    "last_updated": ""
+  },
+  {
+    "provider": "anthropic",
+    "name": "claude-3-opus-20240229",
+    "display_name": "Claude 3 Opus",
+    "description": "Anthropic's most powerful model, delivering state-of-the-art performance on highly complex tasks and demonstrating fluency and human-like understanding.",
+    "documentation_url": "https://docs.anthropic.com/claude/docs/models-overview",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": true
+      },
+      "image": {
+        "read": true,
+        "write": false
+      },
+      "audio": {
+        "read": false,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": true,
+      "streaming": true,
+      "json_mode": true
+    },
+    "context_window": 200000,
+    "max_output_tokens": 4096,
+    "training_cutoff": "2023-08",
+    "model_family": "claude-3",
+    "pricing": {
+      "input_per_1k_tokens": 0.015,
+      "output_per_1k_tokens": 0.075
+    },
+    "last_updated": "2024-02-29"
+  },
+  {
+    "provider": "anthropic",
+    "name": "claude-3-sonnet-20240229",
+    "display_name": "Claude 3 Sonnet",
+    "description": "Anthropic's model balancing intelligence and speed, ideal for enterprise workloads, RAG, and scaled deployments.",
+    "documentation_url": "https://docs.anthropic.com/claude/docs/models-overview",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": true
+      },
+      "image": {
+        "read": true,
+        "write": false
+      },
+      "audio": {
+        "read": false,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": true,
+      "streaming": true,
+      "json_mode": true
+    },
+    "context_window": 200000,
+    "max_output_tokens": 4096,
+    "training_cutoff": "2023-08",
+    "model_family": "claude-3",
+    "pricing": {
+      "input_per_1k_tokens": 0.003,
+      "output_per_1k_tokens": 0.015
+    },
+    "last_updated": "2024-02-29"
+  },
+  {
+    "provider": "anthropic",
+    "name": "claude-3-haiku-20240307",
+    "display_name": "Claude 3 Haiku",
+    "description": "Anthropic's fastest and most compact model for near-instant responsiveness, ideal for customer interactions and content moderation.",
+    "documentation_url": "https://docs.anthropic.com/claude/docs/models-overview",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": true
+      },
+      "image": {
+        "read": true,
+        "write": false
+      },
+      "audio": {
+        "read": false,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": false,
+        "write": false
+      },
+      "function_calling": true,
+      "streaming": true,
+      "json_mode": true
+    },
+    "context_window": 200000,
+    "max_output_tokens": 4096,
+    "training_cutoff": "2023-08",
+    "model_family": "claude-3",
+    "pricing": {
+      "input_per_1k_tokens": 0.00025,
+      "output_per_1k_tokens": 0.00125
+    },
+    "last_updated": "2024-03-07"
+  },
+  {
+    "provider": "anthropic",
+    "name": "claude-2.1",
+    "display_name": "Claude 2.1",
+    "description": "Previous generation model with a 200K context window and reduced rates of hallucination.",
+    "documentation_url": "https://docs.anthropic.com/claude/docs/models-overview",
+    "capabilities": {
+      "text": {
+        "read": true,
+        "write": true
+      },
+      "image": {
+        "read": false,
+        "write": false
+      },
+      "audio": {
+        "read": false,
+        "write": false
+      },
+      "video": {
+        "read": false,
+        "write": false
+      },
+      "file": {
+        "read": true,
+        "write": false
+      },
+      "function_calling": false,
+      "streaming": true,
+      "json_mode": false
+    },
+    "context_window": 200000,
+    "max_output_tokens": 4096,
+    "training_cutoff": "Early 2023",
+    "model_family": "claude-2",
+    "pricing": {
+      "input_per_1k_tokens": 0.008,
+      "output_per_1k_tokens": 0.024
+    },
+    "last_updated": "2023-11-21"
+  }
+]

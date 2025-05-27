@@ -135,7 +135,7 @@ KEY PAPERS
 - `OPENAI_API_KEY` - For OpenAI provider
 - `ANTHROPIC_API_KEY` - For Anthropic provider  
 - `GEMINI_API_KEY` - For Google Gemini provider
-- `BRAVE_API_KEY` - Required for ResearchPaperAPI tool
+- `BRAVE_SEARCH_API_KEY` - Required for ResearchPaperAPI tool
 
 ### Agent Options
 
@@ -291,7 +291,7 @@ case OutputFormatLatex:
 
 ## Best Practices
 
-1. **API Keys**: Ensure BRAVE_API_KEY is set for the ResearchPaperAPI tool
+1. **API Keys**: Ensure BRAVE_SEARCH_API_KEY is set for the ResearchPaperAPI tool
 2. **Specific Queries**: More specific queries yield better results
 3. **Output Format**: Choose format based on downstream processing needs
 4. **Error Handling**: Always check for errors, especially API rate limits
@@ -327,7 +327,7 @@ Debug logging provides:
 ## Troubleshooting
 
 ### No Results Found
-- Check if BRAVE_API_KEY is set
+- Check if BRAVE_SEARCH_API_KEY is set
 - Verify internet connectivity
 - Try broader search terms
 - Enable debug logging to see API calls

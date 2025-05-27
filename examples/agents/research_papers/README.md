@@ -24,7 +24,7 @@ export ANTHROPIC_API_KEY=your_anthropic_key
 export GEMINI_API_KEY=your_gemini_key
 
 # Tool API key (required for ResearchPaperAPI tool)
-export BRAVE_API_KEY=your_brave_key
+export BRAVE_SEARCH_API_KEY=your_brave_key
 ```
 
 ### Basic Usage

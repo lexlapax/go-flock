@@ -25,11 +25,25 @@
   - AgentOptions struct
   - DefaultAgentOptions() function
 
+### gather_news (✓ Complete)
+- **Status**: Fully implemented with tests, CLI, and documentation
+- **Files**: 
+  - Implementation: `pkg/agents/gather_news.go`
+  - Tests: `pkg/agents/gather_news_test.go`
+  - CLI: `examples/agents/gather_news/main.go`
+  - Documentation: `docs/agents/gather_news.md`
+- **Features**:
+  - Multi-source news search (NewsAPI + Brave Search)
+  - Configurable output formats (Markdown, JSON, Text)
+  - Multiple LLM provider support
+  - Integrated with search_news_api, search_web_brave, fetch_webpage, and extract_metadata tools
+  - Debug logging with slog integration
+  - Gemini compatibility with proper tool call formatting
+
 ## Pending Agents
 
 ### Information Gathering
-1. **gather_news** - Current events collection
-2. **extract_web** - General web content extraction
+1. **extract_web** - General web content extraction
 
 ### Processing  
 3. **synthesize_content** - Information combination

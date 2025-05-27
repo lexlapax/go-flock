@@ -29,6 +29,16 @@ go run main.go -query "quantum computing" -debug
 
 # Using specific provider
 go run main.go -query "climate change" -provider gemini -debug
+
+# Gather News Agent (requires NEWS_API_KEY or BRAVE_SEARCH_API_KEY)
+cd examples/agents/gather_news
+go run main.go -query "artificial intelligence breakthroughs"
+
+# News search with JSON output
+go run main.go -query "climate policy" -format json -output news.json
+
+# News search with debug logging
+go run main.go -query "tech layoffs" -debug
 ```
 
 #### Debug Mode
@@ -90,6 +100,13 @@ go run main.go
   - Provider selection and configuration
   - Best practices for agent implementation
 
+- **gather_news/** - News gathering agent with CLI interface demonstrating:
+  - Multi-source news search (NewsAPI + Brave Search)
+  - Real-time current events tracking
+  - Multiple output format support
+  - Debug logging integration
+  - API key configuration and validation
+
 ### Tools (`tools/`)
 - **datetime/** - Date/time manipulation tools (GetCurrentDateTime, CalculateDuration, etc.)
 - **feed/** - RSS/Atom feed fetching and processing (FetchRSSFeed)
@@ -122,7 +139,7 @@ export GEMINI_API_KEY=your_key
 
 # For specific tools
 export NEWS_API_KEY=your_newsapi_key
-export BRAVE_API_KEY=your_brave_api_key
+export BRAVE_SEARCH_API_KEY=your_brave_api_key
 
 # For debugging (optional)
 export FLOCK_DEBUG=true  # Enable debug logging globally
